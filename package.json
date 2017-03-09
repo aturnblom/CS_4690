@@ -1,0 +1,28 @@
+{
+  "name": "cs_4690",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aturnblom/CS_4690.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aturnblom/CS_4690/issues"
+  },
+  "homepage": "https://github.com/aturnblom/CS_4690#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "express": "^4.15.2",
+    "fs": "0.0.1-security",
+    "morgan": "^1.8.1",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.4.1"
+  }
+}
