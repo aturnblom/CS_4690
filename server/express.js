@@ -98,14 +98,18 @@ app.delete('/api/v1/students/:id.json', function (req, res) {
 });
 
 // LIST
-app.get('/api/v1/students.json', function(req, res ) { 
+app.get('/api/v1/students.json', function(req, res) { 
     //console.log(this);
     fs.readdir(`${__dirname}/studentFiles`, function(err, files) {
         if (err) throw err;
-        
+        let studentData = [];
+        //This is going to be accessing a database at a later time;
+        files.forEach(function (file) {
+            let data = fs.readFileSync(`studentFiles/${file}`, 'utf8');
+            studentData.push(JSON.parse(data));
+        });
         // var fileList = files.map(fileName => fileName.replaces('.json', '')); - sometmes you want to process the variables, like strip the .json file ext off it, here is an example of how
-        res.status(200).json(files); // res.sendStatus(200) //newline res.json(files); another formatting option
-        
+        res.status(200).json(studentData); // res.sendStatus(200) //newline res.json(files); another formatting option
     });
 });
 
@@ -128,12 +132,12 @@ function gracefullShutdown() {
     });
 }
 
-process.on('SIGTERM', function() {
-    gracefullShutdown();
-});
+// process.on('SIGTERM', function() {
+//     gracefullShutdown();
+// });
 
-process.on('SIGINT', function(){
-    gracefullShutdown();
-});
+// process.on('SIGINT', function(){
+//     gracefullShutdown();
+// });
 
 console.log(`Listening on port ${PORT}`)
