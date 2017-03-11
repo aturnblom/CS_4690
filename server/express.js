@@ -4,7 +4,6 @@ var path = require('path');
 console.log('Loading Server');
 const WEB = path.join((__dirname + '/../web'));
 
-
 //load main modules
 var express = require('express');
 var fs = require('fs');
@@ -14,7 +13,6 @@ var logger = require('morgan');
 var compression = require('compression');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
-
 
 //create express app
 var app = express();
@@ -33,25 +31,23 @@ app.post('/api/v1/students.json', function(req, res){
     var id;
     //console.log(data);
     
-     fs.readdir(__dirname + '/studentFiles', function(err, files){
+    fs.readdir(__dirname + '/studentFiles', function(err, files){
         if (err) throw err;
         
-      var lastFile = files.pop(); //example would be 0005.json
-      lastFile =/\d*/.exec(lastFile); 
+        var lastFile = files.pop(); //example would be 0005.json
+        lastFile =/\d*/.exec(lastFile); 
         //   lastFile.replace('.json', ''); // makes replacement 
-         //   lastFile.slice(-4);
+        //   lastFile.slice(-4);
       
-      id = lastFile = ('000' + (+lastFile + 1)).slice(-4); // make last file a number then add 1
-      data.id = id;
-      data.zip = data.zip * 1;
-      data.year = data.year * 1;
-      data = JSON.stringify(data, null, 2);
-      
-     
-       fs.writeFile(`${__dirname}/studentFiles/${id}.json`, data, 'utf8', function(err){
-        if (err) throw err;
+        id = lastFile = ('000' + (+lastFile + 1)).slice(-4); // make last file a number then add 1
+        data.id = id;
+        data.zip = data.zip * 1;
+        data.year = data.year * 1;
+        data = JSON.stringify(data, null, 2);
         
-          res.status(201).json(id); //return the id of the new resource
+        fs.writeFile(`${__dirname}/studentFiles/${id}.json`, data, 'utf8', function(err){
+            if (err) throw err; 
+            res.status(201).json(id); //return the id of the new resource
         }); //ENd  of fs.writeFIle
     });//end of fs.readdir
 });//end of app.post
@@ -63,12 +59,10 @@ app.post('/api/v1/students.json', function(req, res){
         var id = req.params.id;
         fs.readFile(`${__dirname}/studentFiles/${id}.json`,'utf8', function(err, data) {
             if (err) throw err;
-            
             var fileContentJSON = JSON.parse(data); // legal, but not very nice
             res.status(200).json(fileContentJSON);
         });
     });
-
 
 // UPDATE
 app.put('/api/v1/students/:id.json', function(req, res){
@@ -80,7 +74,6 @@ app.put('/api/v1/students/:id.json', function(req, res){
     
     fs.writeFile(`${__dirname}/studentFiles/${id}.json`, data, 'utf8', function(err){
         if (err) throw err;
-        
         //res.status(204).end();   DOES THE SAME AS TEXT BELOW
         res.status(204);
     });
@@ -88,13 +81,11 @@ app.put('/api/v1/students/:id.json', function(req, res){
 
 // DELETE
 app.delete('/api/v1/students/:id.json', function (req, res) {
-    
     var id = req.params.id;
     fs.unlink(`${__dirname}/studentFiles/${id}.json`, function(err) {
-            if (err) throw err;
-            
-            res.status(204);
-        });
+        if (err) throw err; 
+        res.status(204);
+    });
 });
 
 // LIST
@@ -113,14 +104,13 @@ app.get('/api/v1/students.json', function(req, res) {
     });
 });
 
-
-
 //traditional webserver stuff for serving static files
  // __dirname built in constant, gives you default directory name that this node is working on
 app.use(express.static(WEB));
-app.get('*', function(req, res) { //404 responses/functions must come last
+//404 responses/functions must come last
+app.get('*', function(req, res) { 
     res.status(404).sendFile(WEB + '/404.html');
-    });
+});
 console.log(WEB);
 
 var server = app.listen(PORT, IP);
@@ -132,6 +122,7 @@ function gracefullShutdown() {
     });
 }
 
+//Commented out temporarily for development need to uncomment these when done
 // process.on('SIGTERM', function() {
 //     gracefullShutdown();
 // });
@@ -140,4 +131,4 @@ function gracefullShutdown() {
 //     gracefullShutdown();
 // });
 
-console.log(`Listening on port ${PORT}`)
+console.log(`Listening on port ${PORT}`);

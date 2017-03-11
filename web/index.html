@@ -22,6 +22,7 @@
     <script src='app.js'></script>
     <script src='studentService.js'></script>
     <script src='studentData.js'></script>
+    <script src='student-info/student-info.js'></script>
     <link rel='stylesheet' href='styles.css'>
 </head>
 <body ng-controller="MainCtrl">
@@ -74,20 +75,7 @@
         <div id="tiles" hidden>
             <md-list id="subTiles" md-cols="1" md-row-height="200px">
                 <md-list-item class="md-1-line" ng-repeat="student in students" role="listitem">
-                  <div class="md-list-item-text">
-                    <!--<md-card flex>
-                      <md-card-content>-->
-                        <b flex>{{student.fname}} {{student.lname}}</b>
-                        <span flex> Start: {{student.startDate}}</span>
-                        <span flex> Street: {{student.street}}</span>
-                        <span flex> City: {{student.city}}</span>
-                        <span flex> State: {{student.state}}</span>
-                        <span flex> Zip: {{student.zip}}</span>
-                        <span flex> Phone: {{student.phone}}</span>
-                        <span flex> Year: {{student.year}}</span>
-                      <!--</md-card-content>
-                    </md-card>-->
-                  </div>
+                  <student-info student="student"></student-info>
                 </md-list-item>
             </md-list>
         </div>

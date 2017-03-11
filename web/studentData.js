@@ -49,8 +49,8 @@ angular.module('app').controller('MainCtrl', function($scope, studentSvc) {
       $('#deleteList').html('');
       $('#updateList').html('');
       for (let j = 0; j < students.length; j++) {
-        $('#deleteList').append('<option>' + students[j].id + '</option>');
-        $('#updateList').append('<option>' + students[j].id + '</option>');
+        $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
+        $('#updateList').append('<md-option>' + students[j].id + '</option>');
       }
     });
 
@@ -58,8 +58,8 @@ angular.module('app').controller('MainCtrl', function($scope, studentSvc) {
       $('#deleteList').html('');
       $('#updateList').html('');
       for (let j = 0; j < students.length; j++) {
-        $('#deleteList').append('<option>' + students[j].id + '</option>');
-        $('#updateList').append('<option>' + students[j].id + '</option>');
+        $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
+        $('#updateList').append('<md-option>' + students[j].id + '</md-option>');
       }
 
     });
@@ -81,12 +81,15 @@ angular.module('app').controller('MainCtrl', function($scope, studentSvc) {
 
       // alert(JSON.stringify(addStudent, null, 2));
 
-      $.ajax({url: '/api/v1/students.json', method: 'POST', data: addStudent});
+			studentSvc.addStudent(addStudent);
+      // $.ajax({url: '/api/v1/students.json', method: 'POST', data: addStudent});
     });
+		//TODO: Turn this into an ng-click
     $('#deleteStudentSubmit').click(function() {
       let deleteId = $('#deleteList').val();
 
-      $.ajax({url: `/api/v1/students/${deleteId}.json`, method: 'DELETE'});
+			studentSvc.deletedStudents(deleteId);
+      // $.ajax({url: `/api/v1/students/${deleteId}.json`, method: 'DELETE'});
     });
     $('#updateStudentSubmit').click(function() {
 
@@ -104,13 +107,12 @@ angular.module('app').controller('MainCtrl', function($scope, studentSvc) {
       updateStudent.year = $('#yearUpForm').val();
       updateStudent.id = updateId;
 
-
-
-      $.ajax({
-        url: `/api/v1/students/${updateId}.json`,
-        method: 'PUT',
-        data: updateStudent
-      });
+			studentSvc.updateStudent(updateId, updateStudent);
+      // $.ajax({
+      //   url: `/api/v1/students/${updateId}.json`,
+      //   method: 'PUT',
+      //   data: updateStudent
+      // });
     });
 
 
