@@ -1,9 +1,9 @@
-angular.module('app').controller('MainCtrl', function(studentSvc) {
+angular.module('app').controller('MainCtrl', function($scope, studentSvc) {
   /* global $ */
   /* global Cookies */
 
   //--------------- NEEDED VARIABLE/OBJ DEC --------------
-		var students = [];
+		$scope.students = [];
 		var sortBy = {category: '', clicked: 0};
 		var completed = 0;
 		var deletedStudents = [];
@@ -221,25 +221,26 @@ angular.module('app').controller('MainCtrl', function(studentSvc) {
   }
 
   function displayTiles(studentsIn) {
-    studentsIn = JSON.parse(JSON.stringify(studentsIn, yearReplacer));
+		$scope.students = studentsIn;
+    // studentsIn = JSON.parse(JSON.stringify(studentsIn, yearReplacer));
 
-    let studentsString = [];
-    for (let student of studentsIn) {
-      studentsString.push(
-          '<div class="col-sm-4 col-md-3"><div class="panel panel-default"><div class="panel-heading">' +
-          '<b>' + student.fname + ' ' + student.lname + '</b>' +
-          '</div>' +
-          '<div class="panel-body">' +
-          'Start: ' + student.startDate + '<br>' +
-          'Street: ' + student.street + '<br>' +
-          'City: ' + student.city + '<br>' +
-          'State: ' + student.state + '<br>' +
-          'Zip: ' + student.zip + '<br>' +
-          'Phone: ' + student.phone + '<br>' +
-          'Year: ' + student.year + '</div></div></div>');
-    }
-    studentsString.join(' ');
-    $('#subTiles').html(studentsString);
+    // let studentsString = [];
+    // for (let student of studentsIn) {
+    //   studentsString.push(
+    //       '<md-grid-tile class="col-sm-4 col-md-3"><div class="panel panel-default"><div class="panel-heading">' +
+    //       '<b>' + student.fname + ' ' + student.lname + '</b>' +
+    //       '</div>' +
+    //       '<div class="panel-body">' +
+    //       'Start: ' + student.startDate + '<br>' +
+    //       'Street: ' + student.street + '<br>' +
+    //       'City: ' + student.city + '<br>' +
+    //       'State: ' + student.state + '<br>' +
+    //       'Zip: ' + student.zip + '<br>' +
+    //       'Phone: ' + student.phone + '<br>' +
+    //       'Year: ' + student.year + '</div></div></md-grid-tile>');
+    // }
+    // studentsString.join(' ');
+    // $('#subTiles').html(studentsString);
   }
 
   //----------------- SORTING HELPER FUNCTIONS ---------------

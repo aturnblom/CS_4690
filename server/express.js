@@ -105,7 +105,7 @@ app.get('/api/v1/students.json', function(req, res) {
         let studentData = [];
         //This is going to be accessing a database at a later time;
         files.forEach(function (file) {
-            let data = fs.readFileSync(`studentFiles/${file}`, 'utf8');
+            let data = fs.readFileSync(`${__dirname}/studentFiles/${file}`, 'utf8');
             studentData.push(JSON.parse(data));
         });
         // var fileList = files.map(fileName => fileName.replaces('.json', '')); - sometmes you want to process the variables, like strip the .json file ext off it, here is an example of how

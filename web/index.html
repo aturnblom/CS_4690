@@ -7,15 +7,17 @@
     <link rel="icon" href="img/book.png" type="image/x-icon">
     
     <!-- Latest compiled and minified CSS -->
-    <link rel='stylesheet' href='lib/bootstrap-3.3.6.min.css'>
+    <!--<link rel='stylesheet' href='lib/bootstrap-3.3.6.min.css'>-->
     <!-- Angular Material style sheet -->
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.3/angular-material.min.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <!-- jquery library from google cdn -->
     <script src='lib/jquery-1.12.4.min.js'></script>
     <!-- Latest compiled JavaScript -->
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js'></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.3/angular-material.min.js"></script>
-    <script src='lib/bootstrap-3.3.6.min.js'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <!--<script src='lib/bootstrap-3.3.6.min.js'></script>-->
     <script src='lib/js.cookie-2.1.2.js'></script>
     <script src='app.js'></script>
     <script src='studentService.js'></script>
@@ -29,21 +31,24 @@
         </div>
         <p>Displays student info in both table and tile format </p>
         <div class="btn-group" style="margin-bottom: 10px">
-            <button id="toggleButton" type="button" class="btn btn-default btn-xs" title="Show/Hide Data">
-                <img src="img/showHide.png" width=30 height=30></button>
-            <button id="tableButton" type="button" class="btn btn-default btn-xs" title="Table View">
-                <img src="img/table.png" width=30></button>
-            <button id="tileButton" type="button" class="btn btn-default btn-xs" title="Tile View">
-                <img src="img/tiles.jpg" width=30></button>
+            <md-button id="toggleButton" type="button" class="md-icon-button" title="Show/Hide Data">
+                <img src="img/showHide.png" width=30 height=30>
+            </md-button>
+            <md-button id="tableButton" type="button" class="md-icon-button" title="Table View">
+                <img src="img/table.png" width=30>
+            </md-button>
+            <md-button id="tileButton" type="button" class="md-icon-button" title="Tile View">
+                <img src="img/tiles.jpg" width=30>
+            </md-button>
         </div>
 <!------------------------- Button group two -------------------------------------------------->
 <div class="btn-group pull-right" style="margin-bottom: 10px">
-            <button id="addStudent" type="button" class="btn btn-default btn-xs" title="Add Student" data-toggle="modal" data-target="#addModal">
-                Add</button>
-            <button id="deleteStudent" type="button" class="btn btn-default btn-xs" title="Delete Student" data-toggle="modal" data-target="#deleteModal">
-                Delete</button>
-            <button id="updateStudent" type="button" class="btn btn-default btn-xs" title="Update Student Info" data-toggle="modal" data-target="#updateModal">
-                Update</button>
+            <md-button id="addStudent" type="button" class="md-raised btn btn-default btn-xs" title="Add Student" data-toggle="modal" data-target="#addModal">
+                Add</md-button>
+            <md-button id="deleteStudent" type="button" class="md-raised btn btn-default btn-xs" title="Delete Student" data-toggle="modal" data-target="#deleteModal">
+                Delete</md-button>
+            <md-button id="updateStudent" type="button" class="md-raised btn btn-default btn-xs" title="Update Student Info" data-toggle="modal" data-target="#updateModal">
+                Update</md-button>
         </div>
 <!---------------------- TABLE CODE------------------------------------------------>
         <table class="table table-striped">
@@ -67,9 +72,24 @@
         
 <!---------------------- TILES CODE------------------------------------------------>
         <div id="tiles" hidden>
-            <div id="subTiles" class="row">
-                
-            </div>
+            <md-list id="subTiles" md-cols="1" md-row-height="200px">
+                <md-list-item class="md-1-line" ng-repeat="student in students" role="listitem">
+                  <div class="md-list-item-text">
+                    <!--<md-card flex>
+                      <md-card-content>-->
+                        <b flex>{{student.fname}} {{student.lname}}</b>
+                        <span flex> Start: {{student.startDate}}</span>
+                        <span flex> Street: {{student.street}}</span>
+                        <span flex> City: {{student.city}}</span>
+                        <span flex> State: {{student.state}}</span>
+                        <span flex> Zip: {{student.zip}}</span>
+                        <span flex> Phone: {{student.phone}}</span>
+                        <span flex> Year: {{student.year}}</span>
+                      <!--</md-card-content>
+                    </md-card>-->
+                  </div>
+                </md-list-item>
+            </md-list>
         </div>
     </div>
     <div id="results">
@@ -79,7 +99,7 @@
 
 <!---------------------- MODAL CODE------------------------------------------------>    
    
-    <div id ='myModal' class="modal fade bs-example-modal-sm loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='static' data-keyboard='false'>
+    <div ng-show="false" id ='myModal' class="modal fade bs-example-modal-sm loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='static' data-keyboard='false'>
       <div class="modal-dialog modal-sm">
       </div>
     </div>
@@ -94,7 +114,7 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <md-button type="button" class="close" data-dismiss="modal">&times;</md-button>
             <h4 class="modal-title">Add Student</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
@@ -132,22 +152,22 @@
               <input type="text" class="form-control" id="phoneForm" placeholder="Phone ex: 555-5555">
             </div>
             <div class="form-group">
-              <label for="yearForm">Student Year</label>
-              <select class="form-control" id="yearForm">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-              </select>
+              <md-input-container>
+                <label for="yearForm">Student Year</label>
+                <md-select class="form-control md-no-underline" ng-model="year" id="yearForm">
+                  <md-option>1</md-option>
+                  <md-option>2</md-option>
+                  <md-option>3</md-option>
+                  <md-option>4</md-option>
+                </md-select>
+              </md-input-container>
             </div>
-            
-              <button type="submit" class="btn btn-success btn-block" id="addStudentSubmit">Submit</button>
+            <md-button type="submit" class="btn btn-success btn-block" id="addStudentSubmit">Submit</md-button>
           </form>
         </div>
-        </div>
-    
       </div>
     </div>
+  </div>
     
     
     <!------- Delete Modal ------->
@@ -157,24 +177,25 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <md-button type="button" class="close" data-dismiss="modal">&times;</md-button>
             <h4 class="modal-title">Delete Student</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
           <form role="form">
             <div class="form-group">
               <label for="deleteList">Select Student to Delete:</label>
-              <select class="form-control" id="deleteList">
-              </select>
+              <md-input-container>
+                <md-select class="form-control md-no-underline" ng-model="studentToDelete" id="deleteList">
+                </md-select>
+              </md-input-container>
             </div>
             
-              <button type="submit" class="btn btn-success btn-block" id="deleteStudentSubmit">Submit</button>
+              <md-button type="submit" class="btn btn-success btn-block" id="deleteStudentSubmit">Submit</md-button>
           </form>
         </div>
-        </div>
-    
       </div>
     </div>
+  </div>
 
     <!----- Update Modal --------->
     <div id="updateModal" class="modal fade" role="dialog">
@@ -183,15 +204,17 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <md-button type="button" class="close" data-dismiss="modal">&times;</md-button>
             <h4 class="modal-title">Update Student</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
           <form role="form">
             <div class="form-group">
               <label for="updateList">Select Student to Update:</label>
-              <select class="form-control" id="updateList">
-              </select>
+              <md-input-container>
+                <md-select class="form-control md-no-underline" ng-model="studentToUpdate" id="updateList">
+                </md-select>
+              </md-input-container>
             </div>
             <div class="form-group">
               <label for="fnameUpForm">First Name</label>
@@ -226,26 +249,22 @@
               <input type="text" class="form-control" id="phoneUpForm" placeholder="Phone ex: 555-5555">
             </div>
             <div class="form-group">
-              <label for="yearUpForm">Select Student Year:</label>
-              <select class="form-control" id="yearUpForm">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-              </select>
+              <md-input-container>
+                <label for="yearUpForm">Select Student Year:</label>
+                <md-select class="form-control md-no-underline" ng-model="studentYear" id="yearUpForm">
+                  <md-option>1</md-option>
+                  <md-option>2</md-option>
+                  <md-option>3</md-option>
+                  <md-option>4</md-option>
+                </md-select>
+              </md-input-container>
             </div>
-            
-            
-            
-            
-            
-              <button type="submit" class="btn btn-success btn-block" id="updateStudentSubmit">Submit</button>
+            <md-button type="submit" class="btn btn-success btn-block" id="updateStudentSubmit">Submit</md-button>
           </form>
         </div>
-        </div>
-    
       </div>
     </div>
+  </div>
 
     
     
