@@ -48,6 +48,10 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 			});
 		};
 
+		$scope.close = function() {
+			$mdDialog.cancel();
+		};
+
     //--------------- VIEW BUTTON FUNCTIONS AND COOKIES ----
     $('#toggleButton').click(function() {
       $('tbody').toggle(FADE_TIME);
@@ -76,7 +80,7 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
     //   $('#updateList').html('');
     //   for (let j = 0; j < students.length; j++) {
     //     $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
-    //     $('#updateList').append('<md-option>' + students[j].id + '</option>');
+    //     $('#updateList').append('<md-option>' + students[j].id + '</md-option>');
     //   }
     // });
 

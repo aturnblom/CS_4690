@@ -43,7 +43,7 @@
               <img src="img/tiles.jpg" width=30>
             </md-button>
         </div>
-        <!------------------------- Button group two -------------------------------------------------->
+        <!-- Button group two -->
         <div class="btn-group pull-right" style="margin-bottom: 10px">
             <md-button id="addStudent" type="button" class="md-raised btn btn-default btn-xs" title="Add Student" ng-click="showAddStudent($event)" data-toggle="modal" data-target="#addModal">
                 Add</md-button>
@@ -52,7 +52,7 @@
             <md-button id="updateStudent" type="button" class="md-raised btn btn-default btn-xs" title="Update Student Info" ng-click="showUpdateStudent($event)" data-toggle="modal" data-target="#updateModal">
                 Update</md-button>
         </div>
-        <!---------------------- TABLE CODE------------------------------------------------>
+        <!-- TABLE CODE -->
         <table class="table table-striped">
           <thead>
             <tr id='tableHead'>
@@ -72,7 +72,7 @@
           </tbody>
         </table>
         
-        <!---------------------- TILES CODE------------------------------------------------>
+        <!-- TILES CODE -->
         <div id="tiles" hidden>
           <md-list id="subTiles" md-cols="1" md-row-height="200px">
             <md-list-item class="md-1-line" ng-repeat="student in students" role="listitem">
@@ -84,7 +84,7 @@
     </md-content>
     <div id="results"></div>
     
-    <!---------------------- MODAL CODE------------------------------------------------>    
+    <!-- MODAL CODE -->    
    
     <!--<md-dialog ng-show="false" id ='myModal' class="modal fade bs-example-modal-sm loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='static' data-keyboard='false'>
       <div class="modal-dialog modal-sm"></div>
@@ -96,164 +96,174 @@
     <!-- Modal -->
     <div style="visibility: hidden">
       <div id="addModal" class="md-dialog-container">
-        <md-dialog layout-padding class="modal fade" role="dialog">
-          <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <md-button type="button" class="close" data-dismiss="modal">&times;</md-button>
-                <h4 class="modal-title">Add Student</h4>
+        <md-dialog>
+          <form ng-cloak>
+            <md-toolbar>
+              <div class="md-toolbar-tools">
+                <h4>Add Student</h4>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="close()">
+                  <md-icon md-svg-src="img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
               </div>
-              <div class="modal-body" style="padding:40px 50px;">
-                <md-content role="form">
-                  <md-input-container class="form-group">
-                    <label for="fnameForm">First Name</label>
-                    <input type="text" class="form-control" id="fnameForm" ng-model="addStudent.fname" placeholder="First Name">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="lnameForm">Last Name</label>
-                    <input type="text" class="form-control" id="lnameForm" ng-model="addStudent.lname" placeholder="Last Name">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="startDateForm">Start Date</label>
-                    <input type="text" class="form-control" id="startDateForm" ng-model="addStudent.startDate" placeholder="Start Date ex: mm/dd/yy">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="streetForm">Street</label>
-                    <input type="text" class="form-control" id="streetForm" ng-model="addStudent.street" placeholder="Street Address">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="cityForm">City</label>
-                    <input type="text" class="form-control" id="cityForm" ng-model="addStudent.city" placeholder="City">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="stateForm">State Abbreviation</label>
-                    <input type="text" class="form-control" id="stateForm" ng-model="addStudent.state" placeholder="State ex: ID">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="zipForm">Zip Code</label>
-                    <input type="text" class="form-control" id="zipForm" ng-model="addStudent.zip" placeholder="Zip ex: 83713">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="phoneForm">Phone Number</label>
-                    <input type="text" class="form-control" id="phoneForm" ng-model="addStudent.phone" placeholder="Phone ex: 555-5555">
-                  </md-input-container>
-                  <md-input-container>
-                    <label for="yearForm">Student Year</label>
-                    <md-select class="form-control md-no-underline" ng-model="addStudent.year" id="yearForm">
-                      <md-option>1</md-option>
-                      <md-option>2</md-option>
-                      <md-option>3</md-option>
-                      <md-option>4</md-option>
-                    </md-select>
-                  </md-input-container>
-                  <md-button type="submit" class="md-raised btn btn-success btn-block" id="addStudentSubmit">Submit</md-button>
-                </md-content>
+            </md-toolbar>
+            <md-dialog-content>
+              <div class="md-dialog-content">
+                <md-input-container >
+                  <label for="fnameForm">First Name</label>
+                  <input type="text" class="form-control" id="fnameForm" ng-model="addStudent.fname" placeholder="First Name">
+                </md-input-container>
+                <md-input-container class="form-group">
+                  <label for="lnameForm">Last Name</label>
+                  <input type="text" class="form-control" id="lnameForm" ng-model="addStudent.lname" placeholder="Last Name">
+                </md-input-container>
+                <md-input-container class="form-group">
+                  <label for="startDateForm">Start Date</label>
+                  <input type="text" class="form-control" id="startDateForm" ng-model="addStudent.startDate" placeholder="Start Date ex: mm/dd/yy">
+                </md-input-container>
+                <md-input-container class="form-group">
+                  <label for="streetForm">Street</label>
+                  <input type="text" class="form-control" id="streetForm" ng-model="addStudent.street" placeholder="Street Address">
+                </md-input-container>
+                <md-input-container class="form-group">
+                  <label for="cityForm">City</label>
+                  <input type="text" class="form-control" id="cityForm" ng-model="addStudent.city" placeholder="City">
+                </md-input-container>
+                <md-input-container class="form-group">
+                  <label for="stateForm">State Abbreviation</label>
+                  <input type="text" class="form-control" id="stateForm" ng-model="addStudent.state" placeholder="State ex: ID">
+                </md-input-container>
+                <md-input-container class="form-group">
+                  <label for="zipForm">Zip Code</label>
+                  <input type="text" class="form-control" id="zipForm" ng-model="addStudent.zip" placeholder="Zip ex: 83713">
+                </md-input-container>
+                <md-input-container class="form-group">
+                  <label for="phoneForm">Phone Number</label>
+                  <input type="text" class="form-control" id="phoneForm" ng-model="addStudent.phone" placeholder="Phone ex: 555-5555">
+                </md-input-container>
+                <md-input-container>
+                  <label for="yearForm">Student Year</label>
+                  <md-select class="form-control md-no-underline" ng-model="addStudent.year" id="yearForm">
+                    <md-option>1</md-option>
+                    <md-option>2</md-option>
+                    <md-option>3</md-option>
+                    <md-option>4</md-option>
+                  </md-select>
+                </md-input-container>
+                <md-button type="submit" class="md-raised btn btn-success btn-block" id="addStudentSubmit">Submit</md-button>
               </div>
-            </div>
-          </div>
+            </md-dialog-content>
+          </form>
         </md-dialog>
       </div>
     </div>
     
-    
-    <!------- Delete Modal ------->
+    <!-- Delete Modal -->
     <div style="visibility: hidden">
       <div id="deleteModal" class="md-dialog-container">
-        <md-dialog layout-padding class="modal fade" role="dialog">
-          <div class="modal-dialog">
-        
+        <md-dialog>
+          <form ng-cloak>
             <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <md-button type="button" class="close" data-dismiss="modal">&times;</md-button>
-                <h4 class="modal-title">Delete Student</h4>
+            <md-toolbar>
+              <div class="md-toolbar-tools">
+                <h4>Delete Student</h4>
+                <span flex></span>
+                <md-button type="button" class="md-icon-button" ng-click="close()" data-dismiss="modal">
+                  <md-icon md-svg-src="img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
               </div>
-              <div class="modal-body" style="padding:40px 50px;">
-                <md-content role="form">
-                  <md-input-container>
-                    <label for="deleteList">Select Student to Delete:</label>
-                    <md-select class="form-control md-no-underline" ng-model="studentToDelete" id="deleteList"></md-select>
-                  </md-input-container>
-                  <md-button type="submit" class="md-raised btn btn-success btn-block" id="deleteStudentSubmit">Submit</md-button>
-                </md-content>
-              </div>
-            </div>
-          </div>
+            </md-toolbar>
+            <md-dialog-content>
+              <md-input-container>
+                <label for="deleteList">Select Student to Delete:</label>
+                <md-select class="form-control md-no-underline" ng-model="studentToDelete">
+                  <md-option ng-repeat="student in students">{{student.id}}</md-option>
+                </md-select>
+              </md-input-container>
+              <md-button type="submit" class="md-raised btn btn-success btn-block" id="deleteStudentSubmit">Submit</md-button>
+            </md-dialog-content>
+          </form>
         </md-dialog>
       </div>
     </div>
 
-    <!----- Update Modal --------->
+    <!-- Update Modal -->
     <div style="visibility: hidden">
       <div id="updateModal" class="md-dialog-container">
-        <md-dialog layout-padding class="modal fade" role="dialog">
-          <div class="modal-dialog">
-        
+        <md-dialog>
+          <form ng-cloak>
             <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <md-button type="button" class="close" data-dismiss="modal">&times;</md-button>
-                <h4 class="modal-title">Update Student</h4>
+            <md-toolbar>
+              <div class="md-toolbar-tools">
+                <h4>Update Student</h4>
+                <span flex></span>
+                <md-button type="button" class="md-icon-button" ng-click="close()">
+                  <md-icon md-svg-src="img/icons/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
               </div>
-              <div class="modal-body" style="padding:40px 50px;">
-                <md-content role="form">
-                  <md-input-container>
-                    <label for="updateList">Select Student to Update:</label>
-                    <md-select class="form-control md-no-underline" ng-model="studentToUpdate" id="updateList"></md-select>
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="fnameUpForm">First Name</label>
-                    <input type="text" class="form-control" id="fnameUpForm" ng-model="updateStudent.fname" placeholder="First Name">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="lnameUpForm">Last Name</label>
-                    <input type="text" class="form-control" id="lnameUpForm" ng-model="updateStudent.lname" placeholder="Last Name">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="startDateUpForm">Start Date</label>
-                    <input type="text" class="form-control" id="startDateUpForm" ng-model="updateStudent.startDate" placeholder="Start Date ex: mm/dd/yy">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="streetUpForm">Street</label>
-                    <input type="text" class="form-control" id="streetUpForm" ng-model="updateStudent.street" placeholder="Street Address">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="cityUpForm">City</label>
-                    <input type="text" class="form-control" id="cityUpForm" ng-model="updateStudent.city" placeholder="City">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="stateUpForm">State Abbreviation</label>
-                    <input type="text" class="form-control" id="stateUpForm" ng-model="updateStudent.state" placeholder="State ex: ID">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="zipUpForm">Zip Code</label>
-                    <input type="text" class="form-control" id="zipUpForm" ng-model="updateStudent.zip" placeholder="Zip ex: 83713">
-                  </md-input-container>
-                  <md-input-container class="form-group">
-                    <label for="phoneUpForm">Phone Number</label>
-                    <input type="text" class="form-control" id="phoneUpForm" ng-model="updateStudent.phone" placeholder="Phone ex: 555-5555">
-                  </md-input-container>
-                  <md-input-container>
-                    <label for="yearUpForm">Select Student Year:</label>
-                    <md-select class="form-control md-no-underline" ng-model="updateStudent.year" id="yearUpForm">
-                      <md-option>1</md-option>
-                      <md-option>2</md-option>
-                      <md-option>3</md-option>
-                      <md-option>4</md-option>
-                    </md-select>
-                  </md-input-container>
-                  <md-button type="submit" class="md-raised btn btn-success btn-block" id="updateStudentSubmit">Submit</md-button>
-                </md-content>
-              </div>
-            </div>
-          </div>
+            </md-toolbar>
+            <md-dialog-content>
+              <md-input-container>
+                <label for="updateList">Select Student to Update:</label>
+                <md-select class="form-control md-no-underline" ng-model="studentToUpdate" id="updateList">
+                  <md-option ng-repeat="student in students">{{student.id}}</md-option>
+                </md-select>
+              </md-input-container>
+              <br>
+              <md-input-container class="form-group">
+                <label for="fnameUpForm">First Name</label>
+                <input type="text" class="form-control" id="fnameUpForm" ng-model="updateStudent.fname" placeholder="First Name">
+              </md-input-container>
+              <md-input-container class="form-group">
+                <label for="lnameUpForm">Last Name</label>
+                <input type="text" class="form-control" id="lnameUpForm" ng-model="updateStudent.lname" placeholder="Last Name">
+              </md-input-container>
+              <br>
+              <md-input-container class="form-group">
+                <label for="startDateUpForm">Start Date</label>
+                <input type="text" class="form-control" id="startDateUpForm" ng-model="updateStudent.startDate" placeholder="Start Date ex: mm/dd/yy">
+              </md-input-container>
+              <md-input-container class="form-group">
+                <label for="streetUpForm">Street</label>
+                <input type="text" class="form-control" id="streetUpForm" ng-model="updateStudent.street" placeholder="Street Address">
+              </md-input-container>
+              <md-input-container class="form-group">
+                <label for="cityUpForm">City</label>
+                <input type="text" class="form-control" id="cityUpForm" ng-model="updateStudent.city" placeholder="City">
+              </md-input-container>
+              <md-input-container class="form-group">
+                <label for="stateUpForm">State Abbreviation</label>
+                <input type="text" class="form-control" id="stateUpForm" ng-model="updateStudent.state" placeholder="State ex: ID">
+              </md-input-container>
+              <br>
+              <md-input-container class="form-group">
+                <label for="zipUpForm">Zip Code</label>
+                <input type="text" class="form-control" id="zipUpForm" ng-model="updateStudent.zip" placeholder="Zip ex: 83713">
+              </md-input-container>
+              <md-input-container class="form-group">
+                <label for="phoneUpForm">Phone Number</label>
+                <input type="text" class="form-control" id="phoneUpForm" ng-model="updateStudent.phone" placeholder="Phone ex: 555-5555">
+              </md-input-container>
+              <br>
+              <md-input-container>
+                <label for="yearUpForm">Select Student Year:</label>
+                <md-select class="form-control md-no-underline" ng-model="updateStudent.year" id="yearUpForm">
+                  <md-option>1</md-option>
+                  <md-option>2</md-option>
+                  <md-option>3</md-option>
+                  <md-option>4</md-option>
+                </md-select>
+              </md-input-container>
+              <br>
+              <md-button type="submit" class="md-raised btn btn-success btn-block" id="updateStudentSubmit">Submit</md-button>
+            </md-dialog-content>
+          </form>
         </md-dialog>
       </div>
     </div>
     
     
-<!--------------------- JAVASCRIPT ----------------------------------------------->
+<!-- JAVASCRIPT -->
     <script src='sortComparators.js'></script>
     <script src="studentData.js"></script>
 </body>
