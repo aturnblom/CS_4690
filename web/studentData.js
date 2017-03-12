@@ -11,10 +11,8 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 		const MODAL_TIME = 500;
 		const STUDENT_DISPLAY_NUM = 10;
 
-  //--------------- DOCUMENT READY FUNCTIONS -------------
-
   //--------------- AJAX GET JSON
-	 // ../server/students.json
+	// ../server/students.json
 		studentSvc.getStudents().then(function(result) { 
 				let students = result.data;
 				displayTable(students.sort(idCompare));
@@ -73,47 +71,26 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
       $('table').hide();
       $('#tiles').show();
     }
-    // ---------------- ADD, DELETE, UPDATE BUTTONS -----
 
-    // $('#deleteStudent').click(function() {
-    //   $('#deleteList').html('');
-    //   $('#updateList').html('');
-    //   for (let j = 0; j < students.length; j++) {
-    //     $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
-    //     $('#updateList').append('<md-option>' + students[j].id + '</md-option>');
-    //   }
+    // $('#addStudentSubmit').click(function() {
+
+    //   let addStudent = {};
+    //   addStudent.fname = $('#fnameForm').val();
+    //   addStudent.lname = $('#lnameForm').val();
+    //   addStudent.startDate = $('#startDateForm').val();
+    //   addStudent.street = $('#streetForm').val();
+    //   addStudent.city = $('#cityForm').val();
+    //   addStudent.state = $('#stateForm').val();
+    //   addStudent.zip = $('#zipForm').val();
+    //   addStudent.phone = $('#phoneForm').val();
+    //   addStudent.year = $('#yearForm').val();
+    //   // addStudent.fname = $('#fnameForm').val();
+
+    //   // alert(JSON.stringify(addStudent, null, 2));
+
+		// 	studentSvc.addStudent(addStudent);
+    //   // $.ajax({url: '/api/v1/students.json', method: 'POST', data: addStudent});
     // });
-
-    // $('#updateStudent').click(function() {
-    //   $('#deleteList').html('');
-    //   $('#updateList').html('');
-    //   for (let j = 0; j < students.length; j++) {
-    //     $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
-    //     $('#updateList').append('<md-option>' + students[j].id + '</md-option>');
-    //   }
-
-    // });
-
-
-    $('#addStudentSubmit').click(function() {
-
-      let addStudent = {};
-      addStudent.fname = $('#fnameForm').val();
-      addStudent.lname = $('#lnameForm').val();
-      addStudent.startDate = $('#startDateForm').val();
-      addStudent.street = $('#streetForm').val();
-      addStudent.city = $('#cityForm').val();
-      addStudent.state = $('#stateForm').val();
-      addStudent.zip = $('#zipForm').val();
-      addStudent.phone = $('#phoneForm').val();
-      addStudent.year = $('#yearForm').val();
-      // addStudent.fname = $('#fnameForm').val();
-
-      // alert(JSON.stringify(addStudent, null, 2));
-
-			studentSvc.addStudent(addStudent);
-      // $.ajax({url: '/api/v1/students.json', method: 'POST', data: addStudent});
-    });
 		//TODO: Turn this into an ng-click
     $('#deleteStudentSubmit').click(function() {
       let deleteId = $('#deleteList').val();

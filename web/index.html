@@ -19,10 +19,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <!--<script src='lib/bootstrap-3.3.6.min.js'></script>-->
     <script src='lib/js.cookie-2.1.2.js'></script>
-    <script src='app.js'></script>
-    <script src='studentService.js'></script>
-    <script src='studentData.js'></script>
-    <script src='student-info/student-info.js'></script>
     <link rel='stylesheet' href='styles.css'>
 </head>
 <body ng-controller="MainCtrl">
@@ -67,8 +63,7 @@
               <th id='tableID' style='cursor: pointer'>ID</th>
             </tr>
           </thead>
-          <tbody>
-              
+          <tbody> 
           </tbody>
         </table>
         
@@ -85,11 +80,6 @@
     <div id="results"></div>
     
     <!-- MODAL CODE -->    
-   
-    <!--<md-dialog ng-show="false" id ='myModal' class="modal fade bs-example-modal-sm loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='static' data-keyboard='false'>
-      <div class="modal-dialog modal-sm"></div>
-    </md-dialog>-->
-    
     <!-- Trigger the modal with a button -->
     <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exModal">Open Modal</button> -->
     
@@ -261,11 +251,13 @@
         </md-dialog>
       </div>
     </div>
-    
-    
+      
 <!-- JAVASCRIPT -->
+    <script src='app.js'></script>
+    <script src='studentService.js'></script>
     <script src='sortComparators.js'></script>
-    <script src="studentData.js"></script>
+    <script src='studentData.js'></script>
+    <script src='student-info/student-info.js'></script>
 </body>
 </html>
 
