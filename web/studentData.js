@@ -1,4 +1,4 @@
-angular.module('app').controller('MainCtrl', function($scope, studentSvc) {
+angular.module('app').controller('MainCtrl', function($scope, $mdDialog, studentSvc) {
   /* global $ */
   /* global Cookies */
 
@@ -21,6 +21,32 @@ angular.module('app').controller('MainCtrl', function($scope, studentSvc) {
 				displayTiles(students);
 		});
 
+		$scope.showAddStudent = function($event) {
+			$mdDialog.show({
+				contentElement: '#addModal',
+				parent: angular.element(document.body),
+				targetEvent: $event,
+				clickOutsideToClose: true
+			});
+		};
+
+		$scope.showDeleteStudent = function($event) {
+			$mdDialog.show({
+				contentElement: '#deleteModal',
+				parent: angular.element(document.body),
+				targetEvent: $event,
+				clickOutsideToClose: true
+			});
+		};
+
+		$scope.showUpdateStudent = function($event) {
+			$mdDialog.show({
+				contentElement: '#updateModal',
+				parent: angular.element(document.body),
+				targetEvent: $event,
+				clickOutsideToClose: true
+			});
+		};
 
     //--------------- VIEW BUTTON FUNCTIONS AND COOKIES ----
     $('#toggleButton').click(function() {
@@ -45,24 +71,24 @@ angular.module('app').controller('MainCtrl', function($scope, studentSvc) {
     }
     // ---------------- ADD, DELETE, UPDATE BUTTONS -----
 
-    $('#deleteStudent').click(function() {
-      $('#deleteList').html('');
-      $('#updateList').html('');
-      for (let j = 0; j < students.length; j++) {
-        $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
-        $('#updateList').append('<md-option>' + students[j].id + '</option>');
-      }
-    });
+    // $('#deleteStudent').click(function() {
+    //   $('#deleteList').html('');
+    //   $('#updateList').html('');
+    //   for (let j = 0; j < students.length; j++) {
+    //     $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
+    //     $('#updateList').append('<md-option>' + students[j].id + '</option>');
+    //   }
+    // });
 
-    $('#updateStudent').click(function() {
-      $('#deleteList').html('');
-      $('#updateList').html('');
-      for (let j = 0; j < students.length; j++) {
-        $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
-        $('#updateList').append('<md-option>' + students[j].id + '</md-option>');
-      }
+    // $('#updateStudent').click(function() {
+    //   $('#deleteList').html('');
+    //   $('#updateList').html('');
+    //   for (let j = 0; j < students.length; j++) {
+    //     $('#deleteList').append('<md-option>' + students[j].id + '</md-option>');
+    //     $('#updateList').append('<md-option>' + students[j].id + '</md-option>');
+    //   }
 
-    });
+    // });
 
 
     $('#addStudentSubmit').click(function() {
