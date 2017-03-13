@@ -4,6 +4,8 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 
 	//--------------- NEEDED VARIABLE/OBJ DEC --------------
 	$scope.students = [];
+	$scope.toggleTable = false;
+	$scope.toggleTile = true;
 	var sortBy = {category: '', clicked: 0};
 	var completed = 0;
 	var deletedStudents = [];
@@ -49,28 +51,44 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	$scope.close = function() { $mdDialog.cancel(); };
 
 	//--------------- VIEW BUTTON FUNCTIONS AND COOKIES ----
-	$('#toggleButton').click(function() {
-		$('tbody').toggle(FADE_TIME);
-		$('.panel-body').toggle(FADE_TIME);
-		// Cookies.set('toggleData','hide');
-	});
-	$('#tileButton').click(function() {
-		$('table').hide(FADE_TIME);
-		$('#tiles').show(FADE_TIME);
-		Cookies.set('view', 'tiles');
-	});
-	$('#tableButton').click(function() {
-		$('table').show(FADE_TIME);
-		$('#tiles').hide(FADE_TIME);
-		Cookies.set('view', 'table');
-	});
+	// $('#toggleButton').click(function() {
+	// 	$('tbody').toggle(FADE_TIME);
+	// 	$('.panel-body').toggle(FADE_TIME);
+	// 	// Cookies.set('toggleData','hide');
+	// });
 
-	if (Cookies.get('view') == 'tiles') {
-		$('table').hide();
-		$('#tiles').show();
+	$scope.toggleTileButton = function() {
+		if(!$scope.toggleTile) {
+			$scope.toggleTable = $scope.toggleTile;
+			$scope.toggleTile = !$scope.toggleTile;
+			Cookies.set('view', 'tiles');
+		}
+	};
+
+	$scope.toggleTableButton = function() {
+		if(!$scope.toggleTable) {
+			$scope.toggleTile = $scope.toggleTable;
+			$scope.toggleTable = !$scope.toggleTable;
+			Cookies.set('view', 'table');
+		}
+	};
+
+	// $('#tileButton').click(function() {
+	// 	$('table').hide(FADE_TIME);
+	// 	$('#tiles').show(FADE_TIME);
+		
+	// });
+	// $('#tableButton').click(function() {
+	// 	$('table').show(FADE_TIME);
+	// 	$('#tiles').hide(FADE_TIME);
+		
+	// });
+
+	if (Cookies.get('view') == 'table') {
+		$scope.toggleTableButton();
 	}
 
-	scope.addStudentSubmit = function() {
+	$scope.addStudentSubmit = function() {
 		studentSvc.addStudent(scope.addStudent);
 	};
 	// $('#addStudentSubmit').click(function() {

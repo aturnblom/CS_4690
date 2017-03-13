@@ -22,7 +22,7 @@
 </head>
 <body ng-controller="MainCtrl">
     <md-content class="container">
-      <md-card>
+      <md-card class="min-card-width">
         <div class="well" style="margin-top: 20px">
           <h2>Student Info Display</h2>
         </div>
@@ -31,10 +31,10 @@
             <md-button class="md-icon-button" title="Show/Hide Data">
               <img src="img/showHide.png" width=30 height=30>
             </md-button>
-            <md-button class="md-icon-button" title="Table View">
+            <md-button class="md-icon-button" title="Table View" ng-click="toggleTableButton()">
               <img src="img/table.png" width=30>
             </md-button>
-            <md-button class="md-icon-button" title="Tile View">
+            <md-button class="md-icon-button" title="Tile View" ng-click="toggleTileButton()">
               <img src="img/tiles.jpg" width=30>
             </md-button>
         </div>
@@ -45,7 +45,7 @@
             <md-button title="Update Student Info" ng-click="showUpdateStudent($event)">Update</md-button>
         </div>
         <!-- TABLE CODE -->
-        <!--<table class="table table-striped">
+        <table class="table table-striped animate-show-hide" ng-show="toggleTable">
           <thead>
             <tr id='tableHead'>
               <th id='tableName' style='cursor: pointer'>Name</th>
@@ -61,10 +61,10 @@
           </thead>
           <tbody> 
           </tbody>
-        </table>-->
+        </table>
         
         <!-- TILES CODE -->
-        <div id="tiles" hidden>
+        <div class="animate-show-hide" ng-show="toggleTile">
           <md-list id="subTiles" md-cols="1" md-row-height="200px">
             <md-list-item>
               <div layout="row" layout-align="start center">
@@ -92,10 +92,13 @@
     <!-- MODAL CODE -->    
     <!-- Trigger the modal with a button -->
     <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exModal">Open Modal</button> -->
-    
-    <!-- Modal -->
+    <div id ='myModal' class="modal fade bs-example-modal-sm loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='static' data-keyboard='false'>
+      <div class="modal-dialog modal-sm">
+      </div>
+    </div>
+    <!-- Add Modal -->
     <div style="visibility: hidden">
-      <div id="addModal" class="md-dialog-container">
+      <div class="md-dialog-container">
         <md-dialog>
           <form ng-cloak>
             <md-toolbar>
@@ -160,7 +163,7 @@
     
     <!-- Delete Modal -->
     <div style="visibility: hidden">
-      <div id="deleteModal" class="md-dialog-container">
+      <div class="md-dialog-container">
         <md-dialog>
           <form ng-cloak>
             <!-- Modal content-->
@@ -189,7 +192,7 @@
 
     <!-- Update Modal -->
     <div style="visibility: hidden">
-      <div id="updateModal" class="md-dialog-container">
+      <div class="md-dialog-container">
         <md-dialog>
           <form ng-cloak>
             <!-- Modal content-->

@@ -5,8 +5,6 @@ angular.module('app').directive('studentInfo', function() {
         scope: {
             student: '='
         },
-        link: function(scope, elem, attrs) {
-            console.log(scope.student);
-        }
+        link: function(scope, elem, attrs) {}
     }
 });
