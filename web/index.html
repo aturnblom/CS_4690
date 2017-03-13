@@ -57,13 +57,14 @@
               <span id='tableYear' style='cursor: pointer'>Year</span>
               <span id='tableID' style='cursor: pointer'>ID</span>
             </md-list-item>
-          <tbody> 
-          </tbody>
+            <md-list-item ng-repeat="student in students">
+
+            </md-list-item>
         </md-list>
         
         <!-- TILES CODE -->
         <div class="animate-show-hide" ng-show="toggleTile">
-          <md-grid-list id="subTiles" md-cols="5" md-row-height="200px">
+          <md-grid-list id="subTiles" md-cols="4" md-row-height="200px">
             <md-grid-tile class="md-1-line" ng-repeat="student in students" role="listitem">
               <student-info student="student"></student-info>
               <md-divider ng-if="!$last"></md-divider>

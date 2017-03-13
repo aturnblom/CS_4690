@@ -16,9 +16,7 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	//--------------- AJAX GET JSON
 	// ../server/students.json
 	studentSvc.getStudents().then(function(result) {
-		let students = result.data;
-		displayTable(students.sort(idCompare));
-		displayTiles(students);
+		$scope.students = result.data;
 	});
 
 	$scope.showAddStudent = function($event) {
@@ -206,40 +204,40 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 
 	//----------- DISPLAY FUNCTIONS ---------------------
 
-	function tableHeadReset() {
-		$('#tableName').html('Name');
-		$('#tableStart').html('Start');
-		$('#tableCity').html('City');
-		$('#tableState').html('State');
-		$('#tableZip').html('Zip');
-		$('#tableYear').html('Year');
-		$('#tableID').html('ID');
-	}
+	// function tableHeadReset() {
+	// 	$('#tableName').html('Name');
+	// 	$('#tableStart').html('Start');
+	// 	$('#tableCity').html('City');
+	// 	$('#tableState').html('State');
+	// 	$('#tableZip').html('Zip');
+	// 	$('#tableYear').html('Year');
+	// 	$('#tableID').html('ID');
+	// }
 
 
-	function displayTable(studentsIn) {
-		tableHeadReset();
+	// function displayTable(studentsIn) {
+	// 	tableHeadReset();
 
-		studentsIn = JSON.parse(JSON.stringify(studentsIn, yearReplacer));
+	// 	studentsIn = JSON.parse(JSON.stringify(studentsIn, yearReplacer));
 
-		let studentsString = [];
-		for (let student of studentsIn) {
-			studentsString.push(
-					`<tr id=${student.id}>` +
-					'<td>' + student.lname + ', ' + student.fname + '</td>' +
-					'<td>' + student.startDate + '</td>' +
-					'<td>' + student.street + '</td>' +
-					'<td>' + student.city + '</td>' +
-					'<td>' + student.state + '</td>' +
-					'<td>' + student.zip + '</td>' +
-					'<td>' + student.phone + '</td>' +
-					'<td>' + student.year + '</td>' +
-					'<td>' + student.id + '</td>' +
-					'</tr>');
-		}
-		studentsString.join(' ');
-		$('tbody').html(studentsString);
-	}
+	// 	let studentsString = [];
+	// 	for (let student of studentsIn) {
+	// 		studentsString.push(
+	// 				`<tr id=${student.id}>` +
+	// 				'<td>' + student.lname + ', ' + student.fname + '</td>' +
+	// 				'<td>' + student.startDate + '</td>' +
+	// 				'<td>' + student.street + '</td>' +
+	// 				'<td>' + student.city + '</td>' +
+	// 				'<td>' + student.state + '</td>' +
+	// 				'<td>' + student.zip + '</td>' +
+	// 				'<td>' + student.phone + '</td>' +
+	// 				'<td>' + student.year + '</td>' +
+	// 				'<td>' + student.id + '</td>' +
+	// 				'</tr>');
+	// 	}
+	// 	studentsString.join(' ');
+	// 	$('tbody').html(studentsString);
+	// }
 
 	function displayTiles(studentsIn) {
 		$scope.students = studentsIn;
