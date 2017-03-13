@@ -1,14 +1,14 @@
-<div llayout="row" clayout-align="start center" cclass="student-info md-list-item-text">
-    <md-grid-tile-header>
-        <b cclass="name-info" clayout="column" clayout-align="none" clayout-padding>{{student.fname}} {{student.lname}}</b>
+<div cclass="student-info md-list-item-text">
+    <md-grid-tile-header layout-padding>
+        <b cclass="name-info" clayout="column" clayout-align="none" layout-padding>{{student.fname}} {{student.lname}}</b>
     </md-grid-tile-header>
-    <div>
-        <div cclass="start-info" layout="column" layout-align="none" clayout-padding flex>{{student.startDate}}</div>
-        <div cclass="street-info" layout="column" layout-align="none" clayout-padding flex>{{student.street}}</div>
-        <div cclass="city-info" layout="column" layout-align="none" clayout-padding flex>{{student.city}}</div>
-        <div cclass="state-info" layout="column" layout-align="none" clayout-padding flex>{{student.state}}</div>
-        <div cclass="zip-info" layout="column" layout-align="none" clayout-padding flex>{{student.zip}}</div>
-        <div cclass="phone-info" layout="column" layout-align="none" clayout-padding flex>{{student.phone}}</div>
-        <div layout="column" layout-align="none" clayout-padding flex>{{student.year}}</div>
+    <div class="md-padding student-info-padding">
+        <div class="student-text-overflow">{{student.startDate}}</div>
+        <div class="student-text-overflow">{{student.street}}</div>
+        <div class="student-text-overflow">{{student.city}}</div>
+        <div class="student-text-overflow">{{student.state}}</div>
+        <div class="student-text-overflow">{{student.zip}}</div>
+        <div class="student-text-overflow">{{student.phone}}</div>
+        <div class="student-text-overflow">{{student.year}}</div>
     </div>
 </div>
