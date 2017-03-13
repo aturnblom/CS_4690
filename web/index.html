@@ -45,27 +45,26 @@
             <md-button title="Update Student Info" ng-click="showUpdateStudent($event)">Update</md-button>
         </div>
         <!-- TABLE CODE -->
-        <table class="table table-striped animate-show-hide" ng-show="toggleTable">
-          <thead>
-            <tr id='tableHead'>
-              <th id='tableName' style='cursor: pointer'>Name</th>
-              <th id='tableStart' style='cursor: pointer'>Start</th>
-              <th id='tableStreet'>Street</th>
-              <th id='tableCity' style='cursor: pointer'>City</th>
-              <th id='tableState' style='cursor: pointer'>State</th>
-              <th id='tableZip' style='cursor: pointer'>Zip</th>
-              <th id='tablePhone'>Phone</th>
-              <th id='tableYear' style='cursor: pointer'>Year</th>
-              <th id='tableID' style='cursor: pointer'>ID</th>
-            </tr>
-          </thead>
-          <tbody> 
-          </tbody>
-        </table>
+        <md-list class="table table-striped animate-show-hide" ng-show="toggleTable">
+            <md-list-item id='tableHead'>
+              <span id='tableName' style='cursor: pointer'>Name</span>
+              <span id='tableStreet'>Street</span>
+              <span id='tableStart' style='cursor: pointer'>Start</span>
+              <span id='tableCity' style='cursor: pointer'>City</span>
+              <span id='tableState' style='cursor: pointer'>State</span>
+              <span id='tableZip' style='cursor: pointer'>Zip</span>
+              <span id='tablePhone'>Phone</th>
+              <span id='tableYear' style='cursor: pointer'>Year</span>
+              <span id='tableID' style='cursor: pointer'>ID</span>
+            </md-list-item>
+            <md-list-item ng-repeat="student in students">
+
+            </md-list-item>
+        </md-list>
         
         <!-- TILES CODE -->
         <div class="animate-show-hide" ng-show="toggleTile">
-          <md-grid-list id="subTiles" md-cols="5" md-row-height="200px">
+          <md-grid-list id="subTiles" md-cols="4" md-row-height="200px">
             <md-grid-tile class="md-1-line" ng-repeat="student in students" role="listitem">
               <student-info student="student"></student-info>
               <md-divider ng-if="!$last"></md-divider>

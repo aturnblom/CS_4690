@@ -25,6 +25,13 @@ th {
     100% { transform: rotate(360deg); }
 }
 
+/*.student-info {
+    height: 160px;
+    width: 200px;
+    border: 1px solid black;
+    padding: 5px;
+}*/
+
 /*.name-info {
     width: 200px;
     min-width: 200px;
