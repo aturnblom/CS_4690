@@ -66,19 +66,6 @@
         <!-- TILES CODE -->
         <div class="animate-show-hide" ng-show="toggleTile">
           <md-grid-list id="subTiles" md-cols="5" md-row-height="200px">
-            <!--<md-grid-tile>
-              <div layout="row" layout-align="start center">
-                <div class="name-info" layout="column" layout-align="none" layout-padding>Name</div>
-                <div class="start-info" layout="column" layout-align="none" layout-padding>Start</div>
-                <div class="street-info" layout="column" layout-align="none" layout-padding>Street</div>
-                <div class="city-info" layout="column" layout-align="none" layout-padding>City</div>
-                <div class="state-info" layout="column" layout-align="none" layout-padding>State</div>
-                <div class="zip-info" layout="column" layout-align="none" layout-padding>Zip</div>
-                <div class="phone-info" layout="column" layout-align="none" layout-padding>Phone</div>
-                <div layout="column" layout-align="none" layout-padding>Year</div>
-              </div>
-              <md-divider></md-divider>
-            </md-grid-tile>-->
             <md-grid-tile class="md-1-line" ng-repeat="student in students" role="listitem">
               <student-info student="student"></student-info>
               <md-divider ng-if="!$last"></md-divider>
