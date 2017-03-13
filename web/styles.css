@@ -25,8 +25,21 @@ th {
     100% { transform: rotate(360deg); }
 }
 
-/*.student-info {
-    height: 160px;
+.student-info-padding {
+    padding-top: 40px;
+    width: 190px;
+    white-space: nowrap;
+}
+
+.student-text-overflow {
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+
+.grid-width {
+    min-width: 200px;
+}
+ /*   height: 160px;
     width: 200px;
     border: 1px solid black;
     padding: 5px;

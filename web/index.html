@@ -23,10 +23,10 @@
 <body ng-controller="MainCtrl">
     <md-content class="container">
       <md-card class="min-card-width">
-        <div class="well" style="margin-top: 20px">
+        <div class="well" style="margin-top: 20px; margin-left: 10px;">
           <h2>Student Info Display</h2>
         </div>
-        <p>Displays student info in both table and tile format </p>
+        <p style="margin-left: 10px">Displays student info in both table and tile format </p>
         <div>
             <!--<md-button class="md-icon-button" title="Show/Hide Data">
               <img src="img/showHide.png" width=30 height=30>
@@ -64,10 +64,9 @@
         
         <!-- TILES CODE -->
         <div class="animate-show-hide" ng-show="toggleTile">
-          <md-grid-list id="subTiles" md-cols="4" md-row-height="200px">
-            <md-grid-tile class="md-1-line" ng-repeat="student in students" role="listitem">
+          <md-grid-list id="subTiles" md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-gutton="4px" md-row-height="200px">
+            <md-grid-tile class="md-1-line grid-width" ng-repeat="student in students" role="listitem">
               <student-info student="student"></student-info>
-              <md-divider ng-if="!$last"></md-divider>
             </md-grid-tile>
           </md-grid-list>
         </div>
