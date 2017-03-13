@@ -28,9 +28,9 @@
         </div>
         <p>Displays student info in both table and tile format </p>
         <div>
-            <md-button class="md-icon-button" title="Show/Hide Data">
+            <!--<md-button class="md-icon-button" title="Show/Hide Data">
               <img src="img/showHide.png" width=30 height=30>
-            </md-button>
+            </md-button>-->
             <md-button class="md-icon-button" title="Table View" ng-click="toggleTableButton()">
               <img src="img/table.png" width=30>
             </md-button>
@@ -65,8 +65,8 @@
         
         <!-- TILES CODE -->
         <div class="animate-show-hide" ng-show="toggleTile">
-          <md-list id="subTiles" md-cols="1" md-row-height="200px">
-            <md-list-item>
+          <md-grid-list id="subTiles" md-cols="5" md-row-height="200px">
+            <!--<md-grid-tile>
               <div layout="row" layout-align="start center">
                 <div class="name-info" layout="column" layout-align="none" layout-padding>Name</div>
                 <div class="start-info" layout="column" layout-align="none" layout-padding>Start</div>
@@ -78,12 +78,12 @@
                 <div layout="column" layout-align="none" layout-padding>Year</div>
               </div>
               <md-divider></md-divider>
-            </md-list-item>
-            <md-list-item class="md-1-line" ng-repeat="student in students" role="listitem">
+            </md-grid-tile>-->
+            <md-grid-tile class="md-1-line" ng-repeat="student in students" role="listitem">
               <student-info student="student"></student-info>
               <md-divider ng-if="!$last"></md-divider>
-            </md-list-item>
-          </md-list>
+            </md-grid-tile>
+          </md-grid-list>
         </div>
       </md-card>
     </md-content>
@@ -92,13 +92,13 @@
     <!-- MODAL CODE -->    
     <!-- Trigger the modal with a button -->
     <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exModal">Open Modal</button> -->
-    <div id ='myModal' class="modal fade bs-example-modal-sm loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='static' data-keyboard='false'>
+    <!--<div id ='myModal' class="modal fade bs-example-modal-sm loader" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop='static' data-keyboard='false'>
       <div class="modal-dialog modal-sm">
       </div>
-    </div>
-    <!-- Add Modal -->
+    </div>-->
+    <!-- Modal -->
     <div style="visibility: hidden">
-      <div class="md-dialog-container">
+      <div id="addModal" class="md-dialog-container">
         <md-dialog>
           <form ng-cloak>
             <md-toolbar>
@@ -163,7 +163,7 @@
     
     <!-- Delete Modal -->
     <div style="visibility: hidden">
-      <div class="md-dialog-container">
+      <div id="deleteModal" class="md-dialog-container">
         <md-dialog>
           <form ng-cloak>
             <!-- Modal content-->
@@ -192,7 +192,7 @@
 
     <!-- Update Modal -->
     <div style="visibility: hidden">
-      <div class="md-dialog-container">
+      <div id="updateModal" class="md-dialog-container">
         <md-dialog>
           <form ng-cloak>
             <!-- Modal content-->

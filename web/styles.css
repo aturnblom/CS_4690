@@ -25,7 +25,7 @@ th {
     100% { transform: rotate(360deg); }
 }
 
-.name-info {
+/*.name-info {
     width: 200px;
     min-width: 200px;
 }
@@ -67,7 +67,7 @@ th {
 
 .min-card-width {
     min-width: 990px;
-}
+}*/
 
 .animate-show-hide.ng-hide {
   opacity: 0;
