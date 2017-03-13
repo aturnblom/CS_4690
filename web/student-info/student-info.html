@@ -1,10 +1,10 @@
-<div class="student-info md-list-item-text">
-    <b flex>{{student.fname}} {{student.lname}}</b>
-    <span flex> Start: {{student.startDate}}</span>
-    <span flex> Street: {{student.street}}</span>
-    <span flex> City: {{student.city}}</span>
-    <span flex> State: {{student.state}}</span>
-    <span flex> Zip: {{student.zip}}</span>
-    <span flex> Phone: {{student.phone}}</span>
-    <span flex> Year: {{student.year}}</span>
+<div  layout="row" layout-align="start center" class="student-info md-list-item-text">
+    <b class="name-info" layout="column" layout-align="none" layout-padding>{{student.fname}} {{student.lname}}</b>
+    <span class="start-info" layout="column" layout-align="none" layout-padding>{{student.startDate}}</span>
+    <span class="street-info" layout="column" layout-align="none" layout-padding>{{student.street}}</span>
+    <span class="city-info" layout="column" layout-align="none" layout-padding>{{student.city}}</span>
+    <span class="state-info" layout="column" layout-align="none" layout-padding>{{student.state}}</span>
+    <span class="zip-info" layout="column" layout-align="none" layout-padding>{{student.zip}}</span>
+    <span class="phone-info" layout="column" layout-align="none" layout-padding>{{student.phone}}</span>
+    <span layout="column" layout-align="none" layout-padding>{{student.year}}</span>
 </div>

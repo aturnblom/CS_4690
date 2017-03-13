@@ -20,3 +20,35 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.name-info {
+    width: 200px;
+}
+
+.start-info {
+    width: 75px;
+}
+
+.street-info {
+    width: 300px;
+}
+
+.city-info {
+    width: 150px;
+}
+
+.state-info {
+    width: 50px;
+}
+
+.zip-info {
+    width: 60px;
+}
+
+.phone-info {
+    width: 90px;
+}
+
+.year-info {
+
+}
