@@ -5,7 +5,20 @@
 
 th {
     text-align: left;
+    font-size: 13px;
+    height: 100%;
+    display: inline-block;
 }
+md-list-item{
+    box-sizing: border-box;
+    height: 40px;
+    padding-top: 10px;
+    border-bottom: 1px solid rgb(236, 236, 236);
+
+}
+
+
+
 
 /* Custom Modal Style */
 .loader {

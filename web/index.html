@@ -46,20 +46,28 @@
         </div>
         <!-- TABLE CODE -->
         <md-list class="table table-striped animate-show-hide" ng-show="toggleTable">
-            <md-list-item id='tableHead'>
-              <span id='tableName' style='cursor: pointer'>Name</span>
-              <span id='tableStreet'>Street</span>
-              <span id='tableStart' style='cursor: pointer'>Start</span>
-              <span id='tableCity' style='cursor: pointer'>City</span>
-              <span id='tableState' style='cursor: pointer'>State</span>
-              <span id='tableZip' style='cursor: pointer'>Zip</span>
-              <span id='tablePhone'>Phone</span>
-              <span id='tableYear' style='cursor: pointer'>Year</span>
-              <span id='tableID' style='cursor: pointer'>ID</span>
-            </md-list-item>
-            <md-list-item ng-repeat="student in students">
+          <md-list-item>
+            <table id="table" class="table table-hover table-mc-light-blue">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Start</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>Zip</th>
+                <th>Phone</th>
+                <th>Year</th>
+                <th>ID</th>
+              </tr>
+              </thead>
+            </table>
+          </md-list-item>
+          <md-list-item ng-repeat="student in students" role="listitem" class="md-3-line">
+            <div class="md-list-item-text" layout="column">
+              <student-table student="student"></student-table>
+            </div>
+          </md-list-item>
 
-            </md-list-item>
         </md-list>
         
         <!-- TILES CODE -->
@@ -259,6 +267,26 @@
     <script src='student-table/student-table.js'></script>
 </body>
 </html>
+
+
+
+
+
+<!--<md-list-item ng-repeat="student in students" role="listitem">-->
+<!--<student-table student="student"></student-table>-->
+<!--<md-list-item id='tableHead'>-->
+<!--<span id='tableName' style='cursor: pointer'>Name</span>-->
+<!--<span id='tableStreet'>Street</span>-->
+<!--<span id='tableStart' style='cursor: pointer'>Start</span>-->
+<!--<span id='tableCity' style='cursor: pointer'>City</span>-->
+<!--<span id='tableState' style='cursor: pointer'>State</span>-->
+<!--<span id='tableZip' style='cursor: pointer'>Zip</span>-->
+<!--<span id='tablePhone'>Phone</span>-->
+<!--<span id='tableYear' style='cursor: pointer'>Year</span>-->
+<!--<span id='tableID' style='cursor: pointer'>ID</span>-->
+<!--</md-list-item>-->
+
+<!--</md-list-item>-->
 
 
 
