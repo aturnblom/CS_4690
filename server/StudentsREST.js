@@ -13,7 +13,7 @@ app.post('/students.json', function(req, res){
         if (err) throw err;
         
         var lastFile = files.pop(); //example would be 0005.json
-        lastFile = /\d*/.exec(lastFile); 
+        lastFile = /\d*/.exec(lastFile);
         id = lastFile = ('000' + (lastFile + 1)).slice(-4); // make last file a number then add 1
         data.id = id;
         data.zip = data.zip * 1;
@@ -74,7 +74,7 @@ app.get('/students.json', function(req, res) {
     });
 });
 
-app.get('*', function(req, res) { 
+app.get('*', function(req, res) {
     res.status(404).sendFile(WEB + '/404.html');
 });
 

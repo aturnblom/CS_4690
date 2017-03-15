@@ -13,10 +13,12 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	const STUDENT_DISPLAY_NUM = 10;
 
 	//--------------- AJAX GET JSON
-	studentSvc.getStudents().then(function(result) {
-		$scope.students = result.data;
-		$scope.students.forEach(student => student.startDate = new Date(student.startDate));
-	});
+	function init() {
+        studentSvc.getStudents().then(function (result) {
+            $scope.students = result.data;
+            $scope.students.forEach(student => student.startDate = new Date(student.startDate));
+        });
+    }
 
 	$scope.showAddStudent = function($event) {
 		$mdDialog.show({
@@ -71,14 +73,20 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 
 	$scope.addStudentSubmit = function() {
 		studentSvc.addStudent(scope.addStudent);
+        $mdDialog.cancel();
+        init();
 	};
 
 	$scope.deleteStudentSubmit = function() {
 		studentSvc.deleteStudent($scope.studentToDeleteById);
+        $mdDialog.cancel();
+        init();
 	};
 
 	$scope.updateStudentSubmit = function() {
 		studentSvc.updateStudent($scope.updateStudent);
+        $mdDialog.cancel();
+        init();
 	};
 
 	//----------------- SORTING FUNCTIONS ---------------
@@ -145,4 +153,5 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 		}
 		return value;
 	}
+	init();
 });
