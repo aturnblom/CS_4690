@@ -9,16 +9,12 @@ var app = express.Router();
 app.post('/students.json', function(req, res){
     var data = req.body;
     var id;
-    
     fs.readdir(__dirname + '/studentFiles', function(err, files){
         if (err) throw err;
         
         var lastFile = files.pop(); //example would be 0005.json
-        lastFile =/\d*/.exec(lastFile); 
-        //   lastFile.replace('.json', ''); // makes replacement 
-        //   lastFile.slice(-4);
-      
-        id = lastFile = ('000' + (+lastFile + 1)).slice(-4); // make last file a number then add 1
+        lastFile = /\d*/.exec(lastFile); 
+        id = lastFile = ('000' + (lastFile + 1)).slice(-4); // make last file a number then add 1
         data.id = id;
         data.zip = data.zip * 1;
         data.year = data.year * 1;
@@ -51,7 +47,6 @@ app.put('/students/:id.json', function(req, res){
     
     fs.writeFile(`${__dirname}/studentFiles/${id}.json`, data, 'utf8', function(err){
         if (err) throw err;
-        //res.status(204).end();   DOES THE SAME AS TEXT BELOW
         res.status(204);
     });
 });
@@ -66,8 +61,7 @@ app.delete('/students/:id.json', function (req, res) {
 });
 
 // LIST
-app.get('/students.json', function(req, res) { 
-    //console.log(this);
+app.get('/students.json', function(req, res) {
     fs.readdir(`${__dirname}/studentFiles`, function(err, files) {
         if (err) throw err;
         let studentData = [];
@@ -76,9 +70,12 @@ app.get('/students.json', function(req, res) {
             let data = fs.readFileSync(`${__dirname}/studentFiles/${file}`, 'utf8');
             studentData.push(JSON.parse(data));
         });
-        // var fileList = files.map(fileName => fileName.replaces('.json', '')); - sometmes you want to process the variables, like strip the .json file ext off it, here is an example of how
-        res.status(200).json(studentData); // res.sendStatus(200) //newline res.json(files); another formatting option
+        res.status(200).json(studentData);
     });
+});
+
+app.get('*', function(req, res) { 
+    res.status(404).sendFile(WEB + '/404.html');
 });
 
 exports = module.exports = app;

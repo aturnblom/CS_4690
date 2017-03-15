@@ -29,9 +29,7 @@ app.use('/api/v1', rest);
  // __dirname built in constant, gives you default directory name that this node is working on
 app.use(express.static(WEB));
 //404 responses/functions must come last
-app.get('*', function(req, res) { 
-    res.status(404).sendFile(WEB + '/404.html');
-});
+
 console.log(WEB);
 
 var server = app.listen(PORT, IP);
