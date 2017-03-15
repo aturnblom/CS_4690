@@ -14,7 +14,7 @@ app.post('/students.json', function(req, res){
         
         var lastFile = files.pop(); //example would be 0005.json
         lastFile = /\d*/.exec(lastFile);
-        id = lastFile = ('000' + (lastFile + 1)).slice(-4); // make last file a number then add 1
+        id = lastFile = ('000' + (+lastFile + 1)).slice(-4); // make last file a number then add 1
         data.id = id;
         data.zip = data.zip * 1;
         data.year = data.year * 1;

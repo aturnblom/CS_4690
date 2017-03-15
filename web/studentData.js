@@ -72,15 +72,17 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	}
 
 	$scope.addStudentSubmit = function() {
-		studentSvc.addStudent($scope.addStudent);
+		studentSvc.addStudent($scope.addStudent).then(function () {
+            init();
+        });
         $mdDialog.cancel();
-        init();
+
 	};
 
 	$scope.deleteStudentSubmit = function() {
 		studentSvc.deleteStudent($scope.studentToDeleteById);
-        $mdDialog.cancel();
-        init();
+        	$mdDialog.cancel();
+            init();
 	};
 
 	$scope.loadStudent = function() {
@@ -90,9 +92,10 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	};
 
 	$scope.updateStudentSubmit = function() {
-		studentSvc.updateStudent($scope.updateStudent);
+		studentSvc.updateStudent($scope.updateStudent).then(function () {
+            init();
+        });
         $mdDialog.cancel();
-        init();
 	};
 
 	//----------------- SORTING FUNCTIONS ---------------
