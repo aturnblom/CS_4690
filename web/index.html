@@ -79,7 +79,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Add Modal -->
     <div style="visibility: hidden">
       <div id="addModal" class="md-dialog-container">
         <md-dialog>
@@ -136,6 +136,7 @@
                     <md-option ng-value="4">4</md-option>
                   </md-select>
                 </md-input-container>
+                <br>
                 <md-button type="submit" class="md-raised" ng-click="addStudentSubmit()" id="addStudentSubmit">Submit</md-button>
               </div>
             </md-dialog-content>
@@ -166,6 +167,7 @@
                   <md-option ng-value="student.id" ng-repeat="student in students">{{student.id}}</md-option>
                 </md-select>
               </md-input-container>
+              <br>
               <md-button type="submit" class="md-raised" ng-click="deleteStudentSubmit()">Submit</md-button>
             </md-dialog-content>
           </form>
