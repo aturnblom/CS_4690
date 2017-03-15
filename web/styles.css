@@ -62,8 +62,8 @@ th {
 }
 
 .start-info {
-    width: 100px;
-    min-width: 100px;
+    width: 125px;
+    min-width: 125px;
 }
 
 .street-info {
@@ -77,13 +77,13 @@ th {
 }
 
 .state-info {
-    width: 50px;
-    min-width: 50px;
+    width: 70px;
+    min-width: 70px;
 }
 
 .zip-info {
-    width: 60px;
-    min-width: 60px;
+    width: 80px;
+    min-width: 80px;
 }
 
 .phone-info {
@@ -94,6 +94,11 @@ th {
 .year-info {
     width: 50px;
     min-width: 50px;
+}
+
+.id-info {
+    width: 80px;
+    min-width: 80px;
 }
 
 .sort {
