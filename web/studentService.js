@@ -9,8 +9,8 @@ angular.module('app').factory('studentSvc', function($http) {
         deleteStudent: function(studentId) {
             return $http.delete(`/api/v1/students/${studentId}.json`);
         },
-        updateStudent: function(studentId, updateStudent) {
-            return $http.put(`/api/v1/students/${studentId}.json`, updateStudent);
+        updateStudent: function(updateStudent) {
+            return $http.put(`/api/v1/students/${updateStudent.id}.json`, updateStudent);
         }
     };
     return studentService;

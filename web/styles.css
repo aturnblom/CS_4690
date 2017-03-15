@@ -53,7 +53,7 @@ th {
 }
 
 .min-card-width {
-    min-width: 1050px;
+    min-width: 1170px;
 }
 
 .name-info {
@@ -92,8 +92,8 @@ th {
 }
 
 .year-info {
-    width: 50px;
-    min-width: 50px;
+    width: 60px;
+    min-width: 60px;
 }
 
 .id-info {
