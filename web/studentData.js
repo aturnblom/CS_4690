@@ -83,6 +83,12 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
         init();
 	};
 
+	$scope.loadStudent = function() {
+		$scope.updateStudent = $scope.students.find(function(student) {
+			return student.id === studentToUpdate;
+		});
+	};
+
 	$scope.updateStudentSubmit = function() {
 		studentSvc.updateStudent($scope.updateStudent);
         $mdDialog.cancel();

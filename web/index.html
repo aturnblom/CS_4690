@@ -42,7 +42,7 @@
         <md-list class="table table-striped animate-show-hide" md-cols="1" md-row-height="200px" ng-show="toggleTable">
             <md-list-item id='tableHead'>
               <div layout="row" layout-align="start center">
-                 <b class="id-info sort" layout="column" layout-align="none" ng-click="sortByID()" layout-padding>ID</b>
+                 <b class="ID-info sort" layout="column" layout-align="none" ng-click="sortByID()" layout-padding>ID</b>
                  <b class="name-info sort" layout="column" layout-align="none" ng-click="sortByName()" layout-padding>Name</b>
                  <b class="start-info sort" layout="column" layout-align="none" ng-click="sortByStartDate()" layout-padding>Start</b>
                  <b class="street-info sort" layout="column" layout-align="none" ng-click="sortByStreet()" layout-padding>Street</b>
@@ -194,7 +194,7 @@
             <md-dialog-content>
               <md-input-container>
                 <label for="updateList">Select Student to Update:</label>
-                <md-select class="form-control md-no-underline" ng-model="studentToUpdate" id="updateList">
+                <md-select class="form-control md-no-underline" ng-model="studentToUpdate" id="updateList" ng-selected="loadStudent()">
                   <md-option ng-value="student.id" ng-repeat="student in students">{{student.id}}</md-option>
                 </md-select>
               </md-input-container>
