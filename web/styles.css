@@ -5,6 +5,9 @@
 
 th {
     text-align: left;
+    font-size: 13px;
+    height: 100%;
+    display: inline-block;
 }
 
 /* Custom Modal Style */
@@ -47,4 +50,54 @@ th {
 .animate-show-hide.ng-hide-add,
 .animate-show-hide.ng-hide-remove {
   transition: all linear 0.5s;
+}
+
+.min-card-width {
+    min-width: 1050px;
+}
+
+.name-info {
+    width: 200px;
+    min-width: 200px;
+}
+
+.start-info {
+    width: 100px;
+    min-width: 100px;
+}
+
+.street-info {
+    width: 300px;
+    min-width: 300px;
+}
+
+.city-info {
+    width: 150px;
+    min-width: 150px;
+}
+
+.state-info {
+    width: 50px;
+    min-width: 50px;
+}
+
+.zip-info {
+    width: 60px;
+    min-width: 60px;
+}
+
+.phone-info {
+    width: 90px;
+    min-width: 90px;
+}
+
+.year-info {
+    width: 50px;
+    min-width: 50px;
+}
+
+.sort {
+    cursor: pointer;
+    outline: none;
+    user-select: none;
 }

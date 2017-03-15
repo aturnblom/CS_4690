@@ -1,4 +1,4 @@
-angular.module('app').controller('MainCtrl', function($scope, $mdDialog, studentSvc) {
+angular.module('app').controller('MainCtrl', function($scope, $mdDialog, studentSvc, $filter, $timeout) {
 	/* global $ */
 	/* global Cookies */
 
@@ -6,6 +6,7 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	$scope.students = [];
 	$scope.toggleTable = false;
 	$scope.toggleTile = true;
+	$scope.loading = false;
 	var sortBy = {category: '', clicked: 0};
 	var completed = 0;
 	var deletedStudents = [];
@@ -14,9 +15,9 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	const STUDENT_DISPLAY_NUM = 10;
 
 	//--------------- AJAX GET JSON
-	// ../server/students.json
 	studentSvc.getStudents().then(function(result) {
 		$scope.students = result.data;
+		$scope.students.forEach(student => student.startDate = new Date(student.startDate));
 	});
 
 	$scope.showAddStudent = function($event) {
@@ -89,178 +90,70 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	$scope.addStudentSubmit = function() {
 		studentSvc.addStudent(scope.addStudent);
 	};
-	// $('#addStudentSubmit').click(function() {
-	//   let addStudent = {};
-	//   addStudent.fname = $('#fnameForm').val();
-	//   addStudent.lname = $('#lnameForm').val();
-	//   addStudent.startDate = $('#startDateForm').val();
-	//   addStudent.street = $('#streetForm').val();
-	//   addStudent.city = $('#cityForm').val();
-	//   addStudent.state = $('#stateForm').val();
-	//   addStudent.zip = $('#zipForm').val();
-	//   addStudent.phone = $('#phoneForm').val();
-	//   addStudent.year = $('#yearForm').val();
-	//   // addStudent.fname = $('#fnameForm').val();
-	//   // alert(JSON.stringify(addStudent, null, 2));
-	// 	
-	//   // $.ajax({url: '/api/v1/students.json', method: 'POST', data:
-	//   addStudent});
-	// });
-	// TODO: Turn this into an ng-click
+
 	$scope.deleteStudentSubmit = function() {
 		studentSvc.deleteStudent($scope.studentToDeleteById);
 	};
-	// $('#deleteStudentSubmit').click(function() {
-	// 	let deleteId = $('#deleteList').val();
-	// 	// $.ajax({url: `/api/v1/students/${deleteId}.json`, method: 'DELETE'});
-	// });
+
 	$scope.updateStudentSubmit = function() {
 		studentSvc.updateStudent($scope.updateStudent);
 	};
-	// $('#updateStudentSubmit').click(function() {
-	// 	let updateId = $('#updateList').val();
-	// 	let updateStudent = {};
-	// 	updateStudent.fname = $('#fnameUpForm').val();
-	// 	updateStudent.lname = $('#lnameUpForm').val();
-	// 	updateStudent.startDate = $('#startDateUpForm').val();
-	// 	updateStudent.street = $('#streetUpForm').val();
-	// 	updateStudent.city = $('#cityUpForm').val();
-	// 	updateStudent.state = $('#stateUpForm').val();
-	// 	updateStudent.zip = $('#zipUpForm').val();
-	// 	updateStudent.phone = $('#phoneUpForm').val();
-	// 	updateStudent.year = $('#yearUpForm').val();
-	// 	updateStudent.id = updateId;
-	// 	studentSvc.updateStudent(updateId, updateStudent);
-	// $.ajax({url: `/api/v1/students/${updateId}.json`, method: 'PUT', data: updateStudent});
-	// });
 
 	//----------------- SORTING FUNCTIONS ---------------
 
-	$('#tableName').click(function() {
-		$('#myModal').modal('show');
-		setTimeout(function() {
-			$('#myModal').modal('hide');
-			tableSort(sortBy, 'Name', nameCompare);
+	function displayLoadingModal(field, order) {
+		$scope.loading = true;
+		$timeout(function() {
+			$scope.students = $filter('orderBy')($scope.students, field, order);
+			$scope.loading = false;
 		}, MODAL_TIME);
-	});
-	$('#tableStart').click(function() {
-		$('#myModal').modal('show');
-		setTimeout(function() {
-			$('#myModal').modal('hide');
-			tableSort(sortBy, 'Start', startDateCompare);
-		}, MODAL_TIME);
-	});
-	$('#tableCity').click(function() {
-		$('#myModal').modal('show');
-		setTimeout(function() {
-			$('#myModal').modal('hide');
-			tableSort(sortBy, 'City', cityCompare);
-		}, MODAL_TIME);
-	});
-	$('#tableState').click(function() {
-		$('#myModal').modal('show');
-		setTimeout(function() {
-			$('#myModal').modal('hide');
-			tableSort(sortBy, 'State', stateCompare);
-		}, MODAL_TIME);
-	});
-	$('#tableZip').click(function() {
-		$('#myModal').modal('show');
-		setTimeout(function() {
-			$('#myModal').modal('hide');
-			tableSort(sortBy, 'Zip', zipCompare);
-		}, MODAL_TIME);
-	});
-	$('#tableYear').click(function() {
-		$('#myModal').modal('show');
-		setTimeout(function() {
-			$('#myModal').modal('hide');
-			tableSort(sortBy, 'Year', yearCompare);
-		}, MODAL_TIME);
-	});
-	$('#tableID').click(function() {
-		$('#myModal').modal('show');
-		setTimeout(function() {
-			$('#myModal').modal('hide');
-			tableSort(sortBy, 'ID', idCompare);
-		}, MODAL_TIME);
-	});
+	}
 
+	$scope.sortByName = function() {
+		displayLoadingModal(['lname', 'fname'], $scope.sortNameDesc);
+		$scope.sortNameDesc = !$scope.sortNameDesc;
+	};
+
+	$scope.sortByStartDate = function() {
+		displayLoadingModal('startDate', $scope.sortStartDateDesc);
+		$scope.sortStartDateDesc = !$scope.sortStartDateDesc;
+	};
+
+	$scope.sortByStreet = function() {
+		displayLoadingModal('street', $scope.sortStreetDesc);
+		$scope.sortStreetDesc = !$scope.sortStreetDesc;
+	};
+
+	$scope.sortByCity = function() {
+		displayLoadingModal('city', $scope.sortCityDesc);
+		$scope.sortCityDesc = !$scope.sortCityDesc;
+	};
+
+	$scope.sortByState = function() {
+		displayLoadingModal('state', $scope.sortStateDesc);
+		$scope.sortStateDesc = !$scope.sortStateDesc;
+	};
+
+	$scope.sortByZip = function() {
+		displayLoadingModal('zip', $scope.sortZipDesc);
+		$scope.sortZipDesc = !$scope.sortZipDesc;
+	};
+
+	$scope.sortByPhone = function() {
+		displayLoadingModal('phone', $scope.sortPhoneDesc);
+		$scope.sortPhoneDesc = !$scope.sortPhoneDesc;
+	};
+
+	$scope.sortByYear = function() {
+		displayLoadingModal('year', $scope.sortYearDesc);
+		$scope.sortYearDesc = !$scope.sortYearDesc;
+	};
 
 	if (Cookies.get('cat')) {
 		$('#table' + Cookies.get('cat')).click();
 	} else if (Cookies.get('revCat')) {
 		let cat = Cookies.get('revCat');
 		$('#table' + cat).click().click();
-	}
-	//---------------- END DOCUMENT READY ---------------
-	// });
-
-
-
-	//----------- COMPARE FUNCTIONS ---------------------
-
-	// THESE COMPARATORS ARE FOUND IN sortComparators.js
-
-	//----------- DISPLAY FUNCTIONS ---------------------
-
-	// function tableHeadReset() {
-	// 	$('#tableName').html('Name');
-	// 	$('#tableStart').html('Start');
-	// 	$('#tableCity').html('City');
-	// 	$('#tableState').html('State');
-	// 	$('#tableZip').html('Zip');
-	// 	$('#tableYear').html('Year');
-	// 	$('#tableID').html('ID');
-	// }
-
-
-	// function displayTable(studentsIn) {
-	// 	tableHeadReset();
-
-	// 	studentsIn = JSON.parse(JSON.stringify(studentsIn, yearReplacer));
-
-	// 	let studentsString = [];
-	// 	for (let student of studentsIn) {
-	// 		studentsString.push(
-	// 				`<tr id=${student.id}>` +
-	// 				'<td>' + student.lname + ', ' + student.fname + '</td>' +
-	// 				'<td>' + student.startDate + '</td>' +
-	// 				'<td>' + student.street + '</td>' +
-	// 				'<td>' + student.city + '</td>' +
-	// 				'<td>' + student.state + '</td>' +
-	// 				'<td>' + student.zip + '</td>' +
-	// 				'<td>' + student.phone + '</td>' +
-	// 				'<td>' + student.year + '</td>' +
-	// 				'<td>' + student.id + '</td>' +
-	// 				'</tr>');
-	// 	}
-	// 	studentsString.join(' ');
-	// 	$('tbody').html(studentsString);
-	// }
-
-	function displayTiles(studentsIn) {
-		$scope.students = studentsIn;
-		// studentsIn = JSON.parse(JSON.stringify(studentsIn, yearReplacer));
-
-		// let studentsString = [];
-		// for (let student of studentsIn) {
-		//   studentsString.push(
-		//       '<md-grid-tile class="col-sm-4 col-md-3"><div class="panel
-		//       panel-default"><div class="panel-heading">' +
-		//       '<b>' + student.fname + ' ' + student.lname + '</b>' +
-		//       '</div>' +
-		//       '<div class="panel-body">' +
-		//       'Start: ' + student.startDate + '<br>' +
-		//       'Street: ' + student.street + '<br>' +
-		//       'City: ' + student.city + '<br>' +
-		//       'State: ' + student.state + '<br>' +
-		//       'Zip: ' + student.zip + '<br>' +
-		//       'Phone: ' + student.phone + '<br>' +
-		//       'Year: ' + student.year + '</div></div></md-grid-tile>');
-		// }
-		// studentsString.join(' ');
-		// $('#subTiles').html(studentsString);
 	}
 
 	//----------------- SORTING HELPER FUNCTIONS ---------------
