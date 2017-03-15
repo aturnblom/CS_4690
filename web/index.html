@@ -58,7 +58,8 @@
               <span id='tableID' style='cursor: pointer'>ID</span>
             </md-list-item>
             <md-list-item ng-repeat="student in students">
-
+              <student-table student="student"></student-table>
+              <md-divider ng-if="!$last"></md-divider>
             </md-list-item>
         </md-list>
         
