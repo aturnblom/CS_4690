@@ -72,7 +72,7 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	}
 
 	$scope.addStudentSubmit = function() {
-		studentSvc.addStudent(scope.addStudent);
+		studentSvc.addStudent($scope.addStudent);
         $mdDialog.cancel();
         init();
 	};
