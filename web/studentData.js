@@ -138,6 +138,10 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 		displayLoadingModal('year', $scope.sortYearDesc);
 		$scope.sortYearDesc = !$scope.sortYearDesc;
 	};
+    $scope.sortByID = function() {
+        displayLoadingModal('id', $scope.sortIDDesc);
+        $scope.sortIDDesc = !$scope.sortIDDesc;
+    };
 
 	// ------------------- YEAR REPLACER FUNCTION --------------
 	function yearReplacer(name, value) {
