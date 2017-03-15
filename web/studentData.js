@@ -85,7 +85,7 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 
 	$scope.loadStudent = function() {
 		$scope.updateStudent = $scope.students.find(function(student) {
-			return student.id === studentToUpdate;
+			return student.id === $scope.studentToUpdate;
 		});
 	};
 
