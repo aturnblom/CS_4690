@@ -1,6 +1,6 @@
-var express = require('express');
-var fs = require('fs');
-
+let express = require('express');
+let fs = require('fs');
+let bodyParser = require('body-parser');
 //create express app
 var app = express.Router();
 
@@ -9,7 +9,6 @@ var app = express.Router();
 app.post('/students.json', function(req, res){
     var data = req.body;
     var id;
-    //console.log(data);
     
     fs.readdir(__dirname + '/studentFiles', function(err, files){
         if (err) throw err;
@@ -28,7 +27,7 @@ app.post('/students.json', function(req, res){
         fs.writeFile(`${__dirname}/studentFiles/${id}.json`, data, 'utf8', function(err){
             if (err) throw err; 
             res.status(201).json(id); //return the id of the new resource
-        }); //ENd  of fs.writeFIle
+        }); //End of fs.writeFIle
     });//end of fs.readdir
 });//end of app.post
     
