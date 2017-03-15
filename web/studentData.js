@@ -131,13 +131,6 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 		$scope.sortYearDesc = !$scope.sortYearDesc;
 	};
 
-	if (Cookies.get('cat')) {
-		$('#table' + Cookies.get('cat')).click();
-	} else if (Cookies.get('revCat')) {
-		let cat = Cookies.get('revCat');
-		$('#table' + cat).click().click();
-	}
-
 	// ------------------- YEAR REPLACER FUNCTION --------------
 	function yearReplacer(name, value) {
 		if (typeof value === 'number') {
