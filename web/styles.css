@@ -39,55 +39,6 @@ th {
 .grid-width {
     min-width: 200px;
 }
- /*   height: 160px;
-    width: 200px;
-    border: 1px solid black;
-    padding: 5px;
-}*/
-
-/*.name-info {
-    width: 200px;
-    min-width: 200px;
-}
-
-.start-info {
-    width: 75px;
-    min-width: 75px;
-}
-
-.street-info {
-    width: 300px;
-    min-width: 300px;
-}
-
-.city-info {
-    width: 150px;
-    min-width: 150px;
-}
-
-.state-info {
-    width: 50px;
-    min-width: 50px;
-}
-
-.zip-info {
-    width: 60px;
-    min-width: 60px;
-}
-
-.phone-info {
-    width: 90px;
-    min-width: 90px;
-}
-
-.year-info {
-    width: 50px;
-    min-width: 50px;
-}
-
-.min-card-width {
-    min-width: 990px;
-}*/
 
 .animate-show-hide.ng-hide {
   opacity: 0;
