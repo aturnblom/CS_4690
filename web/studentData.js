@@ -1,6 +1,4 @@
 angular.module('app').controller('MainCtrl', function($scope, $mdDialog, studentSvc, $filter, $timeout) {
-	/* global $ */
-	/* global Cookies */
 
 	//--------------- NEEDED VARIABLE/OBJ DEC --------------
 	$scope.students = [];
@@ -50,11 +48,6 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	$scope.close = function() { $mdDialog.cancel(); };
 
 	//--------------- VIEW BUTTON FUNCTIONS AND COOKIES ----
-	// $('#toggleButton').click(function() {
-	// 	$('tbody').toggle(FADE_TIME);
-	// 	$('.panel-body').toggle(FADE_TIME);
-	// 	// Cookies.set('toggleData','hide');
-	// });
 
 	$scope.toggleTileButton = function() {
 		if(!$scope.toggleTile) {
@@ -71,17 +64,6 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 			Cookies.set('view', 'table');
 		}
 	};
-
-	// $('#tileButton').click(function() {
-	// 	$('table').hide(FADE_TIME);
-	// 	$('#tiles').show(FADE_TIME);
-		
-	// });
-	// $('#tableButton').click(function() {
-	// 	$('table').show(FADE_TIME);
-	// 	$('#tiles').hide(FADE_TIME);
-		
-	// });
 
 	if (Cookies.get('view') == 'table') {
 		$scope.toggleTableButton();
@@ -154,36 +136,6 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 	} else if (Cookies.get('revCat')) {
 		let cat = Cookies.get('revCat');
 		$('#table' + cat).click().click();
-	}
-
-	//----------------- SORTING HELPER FUNCTIONS ---------------
-	function tableSort(sortObj, category, sorter) {
-		if (sortObj.category === category) {
-			if (sortObj.clicked === 0) {
-				displayTable(students.sort(sorter));
-				$('#table' + category).html(category + ' &#x25b2');
-				sortObj.clicked = 1;
-				Cookies.set('cat', category);
-				// Cookies.set('sortType', sorter);
-				Cookies.remove('revCat');
-
-			} else if (sortObj.clicked === 1) {
-				displayTable(students.sort(sorter).reverse());
-				$('#table' + category).html(category + ' &#x25bc');
-				sortObj.clicked = 0;
-				Cookies.set('revCat', category);
-				// Cookies.set('sortType', sorter);
-				Cookies.remove('cat');
-			}
-		} else {
-			displayTable(students.sort(sorter));
-			$('#table' + category).html(category + ' &#x25b2');
-			sortObj.category = category;
-			sortObj.clicked = 1;
-			Cookies.set('cat', category);
-			//.set('sortType', sorter);
-			Cookies.remove('revCat');
-		}
 	}
 
 	// ------------------- YEAR REPLACER FUNCTION --------------

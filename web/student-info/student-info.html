@@ -1,14 +1,14 @@
 <div cclass="student-info md-list-item-text">
     <md-grid-tile-header layout-padding>
-        <b cclass="name-info" clayout="column" clayout-align="none" layout-padding>{{student.fname}} {{student.lname}}</b>
+        <b>{{student.fname}} {{student.lname}}</b>
     </md-grid-tile-header>
-    <div class="md-padding student-info-padding">
-        <div class="student-text-overflow">{{student.startDate}}</div>
-        <div class="student-text-overflow">{{student.street}}</div>
-        <div class="student-text-overflow">{{student.city}}</div>
-        <div class="student-text-overflow">{{student.state}}</div>
-        <div class="student-text-overflow">{{student.zip}}</div>
-        <div class="student-text-overflow">{{student.phone}}</div>
-        <div class="student-text-overflow">{{student.year}}</div>
+    <div class="student-info-padding">
+        <div class="student-text-overflow">Start: {{student.startDate.toLocaleDateString()}}</div>
+        <div class="student-text-overflow">Address: {{student.street}}</div>
+        <div class="student-text-overflow">City: {{student.city}}</div>
+        <div class="student-text-overflow">State: {{student.state}}</div>
+        <div class="student-text-overflow">Zip: {{student.zip}}</div>
+        <div class="student-text-overflow">Phone: {{student.phone}}</div>
+        <div class="student-text-overflow">Year: {{student.year}}</div>
     </div>
 </div>

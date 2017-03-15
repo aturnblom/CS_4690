@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="img/book.png" type="image/x-icon">
-    <!-- Latest compiled and minified CSS -->
-    <!--<link rel='stylesheet' href='lib/bootstrap-3.3.6.min.css'>-->
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel='stylesheet' href='styles.css'>
@@ -17,7 +15,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-animate.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-    <!--<script src='lib/bootstrap-3.3.6.min.js'></script>-->
     <script src='lib/js.cookie-2.1.2.js'></script>
 </head>
 <body ng-controller="MainCtrl">
@@ -28,9 +25,6 @@
         </div>
         <p style="margin-left: 10px">Displays student info in both table and tile format </p>
         <div>
-            <!--<md-button class="md-icon-button" title="Show/Hide Data">
-              <img src="img/showHide.png" width=30 height=30>
-            </md-button>-->
             <md-button class="md-icon-button" aria-label="Table View" ng-click="toggleTableButton()">
               <img src="img/table.png" width=30>
             </md-button>
@@ -136,10 +130,10 @@
                 <md-input-container>
                   <label for="yearForm">Student Year</label>
                   <md-select class="form-control md-no-underline" ng-model="addStudent.year" id="yearForm">
-                    <md-option>1</md-option>
-                    <md-option>2</md-option>
-                    <md-option>3</md-option>
-                    <md-option>4</md-option>
+                    <md-option ng-value="1">1</md-option>
+                    <md-option ng-value="2">2</md-option>
+                    <md-option ng-value="3">3</md-option>
+                    <md-option ng-value="4">4</md-option>
                   </md-select>
                 </md-input-container>
                 <md-button type="submit" class="md-raised" ng-click="addStudentSubmit()" id="addStudentSubmit">Submit</md-button>
@@ -169,7 +163,7 @@
               <md-input-container>
                 <label for="deleteList">Select Student to Delete:</label>
                 <md-select class="form-control md-no-underline" ng-model="studentToDeleteById">
-                  <md-option ng-repeat="student in students">{{student.id}}</md-option>
+                  <md-option ng-value="student.id" ng-repeat="student in students">{{student.id}}</md-option>
                 </md-select>
               </md-input-container>
               <md-button type="submit" class="md-raised" ng-click="deleteStudentSubmit()">Submit</md-button>
@@ -198,7 +192,7 @@
               <md-input-container>
                 <label for="updateList">Select Student to Update:</label>
                 <md-select class="form-control md-no-underline" ng-model="studentToUpdate" id="updateList">
-                  <md-option ng-repeat="student in students">{{student.id}}</md-option>
+                  <md-option ng-value="student.id" ng-repeat="student in students">{{student.id}}</md-option>
                 </md-select>
               </md-input-container>
               <br>
@@ -240,10 +234,10 @@
               <md-input-container>
                 <label for="yearUpForm">Select Student Year:</label>
                 <md-select class="form-control md-no-underline" ng-model="updateStudent.year" id="yearUpForm">
-                  <md-option>1</md-option>
-                  <md-option>2</md-option>
-                  <md-option>3</md-option>
-                  <md-option>4</md-option>
+                  <md-option ng-value="1">1</md-option>
+                  <md-option ng-value="2">2</md-option>
+                  <md-option ng-value="3">3</md-option>
+                  <md-option ng-value="4">4</md-option>
                 </md-select>
               </md-input-container>
               <br>
