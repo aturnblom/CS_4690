@@ -1,26 +1,25 @@
 # WEB 3 Angular Assignment
-#### CS 4690
+### CS 4690
 
 This assignment was to create a website with two different ways
-to view student information. One being in a table view and the other
-being a tiles view. This project implements [angular-material]. It was
-coded by **Charles Jones** and **Allison Turnblom** through our [GitHub] repository.
+to view student information, one being a table view and the other, a tile view. This project implements [angularjs], [angular-material], [express], [node] and [mongodb]. 
+The project was programmed by **Charles Jones** and **Allison Turnblom** and can be seen at this [GitHub] repository.
 
 ### Highlights
 
-1.Server using REST
-2.Angular implementation
-3.Material interface
-3.Pulls info from file containing JSON
+1. REST Server (using Express)
+2. Angular framework
+3. Angular Material based styles
+4. Retrieves data from mongodb
 
-## What you should see
+### What you should see
 
-As you pull up the website you will see a table of names, addresses, id's and more.
-There will be three buttons right above that, where you can add a new student, delete
-a current student, or update a current student. Above those buttons you will see a
-table and tiles icon that you can press to change your view.
+As you pull up the website you will see a table of basic student information. Three buttons that allow adding, deleting and updating students. And a set of icons that allow you to change your view between table and tile.
 
 
-
+[angularjs]: <https://angularjs.org/>
 [angular-material]: <https://material.angularjs.org/latest/>
+[express]: <https://expressjs.com/>
+[node]: <https://nodejs.org/en/>
+[mongodb]: <https://www.mongodb.com/>
 [GitHub]: <https://github.com/aturnblom/CS_4690>
