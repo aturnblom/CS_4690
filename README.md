@@ -1,4 +1,5 @@
 # WEB 3 Angular Assignment
+#### CS 4690
 
 This assignment was to create a website with two different ways
 to view student information. One being in a table view and the other
