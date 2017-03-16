@@ -16,6 +16,13 @@ The project was programmed by **Charles Jones** and **Allison Turnblom** and can
 
 As you pull up the website you will see a table of basic student information. Three buttons that allow adding, deleting and updating students. And a set of icons that allow you to change your view between table and tile.
 
+### Setting up the server 
+
+To get setup to run the project the libraries for the server need to be installed by running `npm install`. Then next step is to start up the server by setting environment variables PORT and IP like the following example
+
+`PORT=8080 IP=127.0.0.1 node express.js`
+
+Then going to the address or domain the address is set to ie,`localhost:8080` will allow you to view the page.
 
 [angularjs]: <https://angularjs.org/>
 [angular-material]: <https://material.angularjs.org/latest/>
