@@ -21,6 +21,7 @@
     "compression": "^1.6.2",
     "express": "^4.15.2",
     "fs": "0.0.1-security",
+    "mongodb": "^2.2.24",
     "morgan": "^1.8.1",
     "path": "^0.12.7",
     "serve-favicon": "^2.4.1"

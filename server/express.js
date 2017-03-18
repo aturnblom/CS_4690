@@ -30,8 +30,6 @@ app.use('/api/v1', rest);
 app.use(express.static(WEB));
 //404 responses/functions must come last
 
-console.log(WEB);
-
 var server = app.listen(PORT, IP);
 
 function gracefullShutdown() {

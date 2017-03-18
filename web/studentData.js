@@ -14,6 +14,9 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
 
 	//--------------- AJAX GET JSON
 	function init() {
+		$scope.addStudent = {};
+		$scope.updateStudent = {};
+		$scope.deleteStudent = {};
         studentSvc.getStudents().then(function (result) {
             $scope.students = result.data;
             $scope.students.forEach(student => student.startDate = new Date(student.startDate));
@@ -76,7 +79,6 @@ angular.module('app').controller('MainCtrl', function($scope, $mdDialog, student
             init();
         });
         $mdDialog.cancel();
-
 	};
 
 	$scope.deleteStudentSubmit = function() {
