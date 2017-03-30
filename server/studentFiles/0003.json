@@ -1,12 +1,12 @@
 {
   "fname": "Elizabeth",
   "lname": "Howard",
-  "startDate": "3/19/94",
+  "startDate": "1994-03-19T06:00:00.000Z",
   "street": "1726 East 1330 North",
   "city": "Williamsburg",
-  "state": "ID",
+  "state": "MO",
   "zip": 93679,
   "phone": "734-3219",
-  "year": 3,
+  "year": 1,
   "id": "0003"
 }

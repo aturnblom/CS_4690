@@ -3,6 +3,9 @@ let fs = require('fs');
 let bodyParser = require('body-parser');
 let Client = require('./studentsMongoDao');
 let mongodb = new Client();
+var winston = require('winston');
+require('colors').enabled = true;
+
 //create express app
 let app = express.Router();
 
@@ -10,13 +13,10 @@ let app = express.Router();
 // CREATE
 app.post('/students.json', function(req, res){
     var data = req.body;
-    mongodb.connect().then(function(db) {
-        mongodb.getNextSequence(db, 'id').then(function(ret) {
-            data.id = ret.value.seq;
-            mongodb.create(db, data).then(function() {
-                db.close();
-                res.status(200).send('OK');
-            });
+    mongodb.connect(function(db) {
+        mongodb.create(db, data, function() {
+            db.close();
+            res.status(200).send('OK');
         });
     });
 });//end of app.post
@@ -24,8 +24,8 @@ app.post('/students.json', function(req, res){
 // READ
 app.get('/students/:id.json', function(req, res) { // ?name=foo /query string, :id is a variable that you can get us ing the below
     let id = req.params.id;
-    mongodb.connect().then(function() {
-        mongodb.read(db, id).then(function(student) {
+    mongodb.connect(function(db) {
+        mongodb.read(db, id, function(student) {
             db.close();
             res.status(200).json(student);
         });
@@ -39,7 +39,7 @@ app.put('/students/:id.json', function(req, res){
     data.zip = data.zip * 1;
     data.year = data.year * 1;
     data = JSON.stringify(req.body, null, 2);
-    mongodb.connect().then(function(db) {
+    mongodb.connect(function(db) {
         mongodb.update(db, id, data);
         db.close();
         res.status(204).send('OK');
@@ -49,7 +49,7 @@ app.put('/students/:id.json', function(req, res){
 // DELETE
 app.delete('/students/:id.json', function (req, res) {
     let id = req.params.id;
-    mongodb.connect().then(function(db) {
+    mongodb.connect(function(db) {
         mongodb.delete(db, id);
         db.close();
         res.status(204).send('OK');
@@ -58,8 +58,8 @@ app.delete('/students/:id.json', function (req, res) {
 
 // LIST
 app.get('/students.json', function(req, res) {
-    mongodb.connect().then(function(db) {
-        mongodb.list(db).then(function(students) {
+    mongodb.connect(function(db) {
+        mongodb.list(db, function(students) {
             db.close();
             res.status(200).json(students);
         });

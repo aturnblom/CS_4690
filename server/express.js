@@ -1,18 +1,27 @@
-const PORT = process.env.PORT;
-const IP = process.env.IP;
-var path = require('path');
-console.log('Loading Server');
-const WEB = path.join((__dirname + '/../web'));
+let path = require('path');
+let fs = require('fs');
+let nconf = require('nconf');
+nconf.argv()
+    .env()
+    .file({file:'config.json'});
+require('colors').enabled = true;
+
+const WEB = nconf.get('WEB');
+const PORT = nconf.get('PORT');
+const IP = nconf.get('IP');
 
 //load main modules
 let express = require('express');
 
 //load middleware modules
 var logger = require('morgan');
+var winston = require('winston');
 var compression = require('compression');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var rest = require('./StudentsREST');
+
+winston.info('Loading Server');
 
 //create express app
 var app = express();
@@ -33,9 +42,9 @@ app.use(express.static(WEB));
 var server = app.listen(PORT, IP);
 
 function gracefullShutdown() {
-    console.log('\nStarting Shutdown');
+    winston.info('\nStarting Shutdown');
     server.close(function() {
-        console.log('\nShutdown Complete');
+        winston.info('\nShutdown Complete');
     });
 }
 
@@ -48,4 +57,4 @@ function gracefullShutdown() {
 //     gracefullShutdown();
 // });
 
-console.log(`Listening on port ${PORT}`);
+winston.info(`Listening on port ${PORT}`);
