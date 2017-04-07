@@ -6,7 +6,6 @@ nconf.argv()
     .file({file:'config.json'});
 require('colors').enabled = true;
 
-
 const WEB = nconf.get('WEB');
 const PORT = nconf.get('PORT');
 const IP = nconf.get('IP');
@@ -39,8 +38,6 @@ app.use('/api/v1', rest);
  // __dirname built in constant, gives you default directory name that this node is working on
 app.use(express.static(WEB));
 //404 responses/functions must come last
-
-winston.info(WEB);
 
 var server = app.listen(PORT, IP);
 

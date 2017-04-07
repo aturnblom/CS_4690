@@ -80,6 +80,7 @@
         </div>
       </div>
     </div>
+
     <!-- Add Modal -->
     <div style="visibility: hidden">
       <div id="addModal" class="md-dialog-container">
@@ -128,7 +129,7 @@
                   <label for="phoneForm">Phone Number</label>
                   <input type="text" class="form-control" id="phoneForm" ng-model="addStudent.phone" placeholder="Phone ex: 555-5555">
                 </md-input-container>
-                <md-input-container class="form-group">
+                <md-input-container style="vertical-align: top" class="form-group">
                   <label for="yearForm">Student Year</label>
                   <md-select class="form-control md-no-underline" ng-model="addStudent.year" id="yearForm">
                     <md-option ng-value="1">1</md-option>
@@ -207,11 +208,11 @@
                 <label for="lnameUpForm">Last Name</label>
                 <input type="text" class="form-control" id="lnameUpForm" ng-model="updateStudent.lname" placeholder="Last Name">
               </md-input-container>
-              <br>
               <md-input-container class="form-group">
                 <label for="startDateUpForm">Start Date</label>
                 <input type="text" class="form-control" id="startDateUpForm" ng-model="updateStudent.startDate" placeholder="Start Date ex: mm/dd/yy">
               </md-input-container>
+              <br>
               <md-input-container class="form-group">
                 <label for="streetUpForm">Street</label>
                 <input type="text" class="form-control" id="streetUpForm" ng-model="updateStudent.street" placeholder="Street Address">
@@ -233,8 +234,7 @@
                 <label for="phoneUpForm">Phone Number</label>
                 <input type="text" class="form-control" id="phoneUpForm" ng-model="updateStudent.phone" placeholder="Phone ex: 555-5555">
               </md-input-container>
-              <br>
-              <md-input-container>
+              <md-input-container style="vertical-align: top" class="form-group">
                 <label for="yearUpForm">Select Student Year:</label>
                 <md-select class="form-control md-no-underline" ng-model="updateStudent.year" id="yearUpForm">
                   <md-option ng-value="1">1</md-option>
