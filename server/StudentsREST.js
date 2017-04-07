@@ -23,7 +23,7 @@ app.post('/students.json', function(req, res){
     
 // READ
 app.get('/students/:id.json', function(req, res) { // ?name=foo /query string, :id is a variable that you can get us ing the below
-    let id = req.params.id;
+    let id = parseInt(req.params.id);
     mongodb.connect(function(db) {
         mongodb.read(db, id, function(student) {
             db.close();
@@ -34,25 +34,24 @@ app.get('/students/:id.json', function(req, res) { // ?name=foo /query string, :
 
 // UPDATE
 app.put('/students/:id.json', function(req, res){
-    var id = req.params.id;
-    var data = req.body;
-    data.zip = data.zip * 1;
-    data.year = data.year * 1;
-    data = JSON.stringify(req.body, null, 2);
+    let id = parseInt(req.params.id);
+    let data = req.body;
     mongodb.connect(function(db) {
-        mongodb.update(db, id, data);
-        db.close();
-        res.status(204).send('OK');
+        mongodb.update(db, id, data, function() {
+            db.close();
+            res.status(204).send('OK');
+        });
     });
 });
 
 // DELETE
 app.delete('/students/:id.json', function (req, res) {
-    let id = req.params.id;
+    let id = parseInt(req.params.id);
     mongodb.connect(function(db) {
-        mongodb.delete(db, id);
-        db.close();
-        res.status(204).send('OK');
+        mongodb.delete(db, id, function() {
+            db.close();
+            res.status(204).send('OK');
+        });
     });
 });
 
