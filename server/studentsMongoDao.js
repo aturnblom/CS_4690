@@ -7,7 +7,7 @@ nconf.argv()
     .file({file:'config.json'});
 
 // Connection URL
-const URL = nconf.get('URL');
+const URL = nconf.get('mongo-url');
 
 // Use connect method to connect to the Server
 

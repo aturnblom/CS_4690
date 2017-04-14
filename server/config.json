@@ -2,5 +2,9 @@
   "WEB": "../web",
   "PORT": "8080",
   "IP": "127.0.0.1",
-  "URL": "mongodb://127.0.0.1:27017/studentList"
+  "mongo-url": "mongodb://127.0.0.1:27017/studentList",
+  "mysql-url": "mysql://root@127.0.0.1:3306/studentList",
+  "host": "127.0.0.1",
+  "user": "root",
+  "pass": ""
 }
